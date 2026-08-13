@@ -170,5 +170,22 @@
     "rag_evidence": [],
     "news_sentiment": "Neutral",
     "ai_recommendations": []
+  },
+  {
+    "review_id": "REV_0010",
+    "transaction_id": "TXN_API_999",
+    "timestamp": "2026-08-13T05:02:51.812073Z",
+    "analyst_id": "Analyst_Compliance",
+    "decision": "INVESTIGATE",
+    "comments": "Flagged for manual compliance check",
+    "risk_score": 0.85,
+    "anomaly_score": 0.78,
+    "transaction_details": {
+      "transaction_amount": 10000.0
+    },
+    "shap_factors": [],
+    "rag_evidence": [],
+    "news_sentiment": "Negative",
+    "ai_recommendations": []
   }
 ]

@@ -1,29 +1,29 @@
 import re
 from typing import Dict, Any, List
 
-try:
-    from transformers import pipeline, AutoTokenizer, AutoModelForSequenceClassification
-    HAS_TRANSFORMERS = True
-except ImportError:
-    HAS_TRANSFORMERS = False
-
 class FinancialNewsAnalyzer:
-    """Financial news NLP pipeline using FinBERT for sentiment and entity impact extraction."""
+    """Financial news NLP pipeline using FinBERT for sentiment and entity impact extraction (Lazy-loaded)."""
 
     def __init__(self, model_name: str = "ProsusAI/finbert"):
         self.model_name = model_name
         self.sentiment_pipeline = None
-        
-        if HAS_TRANSFORMERS:
+        self._initialized = False
+
+    def _get_pipeline(self):
+        """Lazy load FinBERT transformers pipeline on demand."""
+        if not self._initialized:
+            self._initialized = True
             try:
+                from transformers import pipeline
                 self.sentiment_pipeline = pipeline(
                     "text-classification",
-                    model=model_name,
+                    model=self.model_name,
                     return_all_scores=False
                 )
             except Exception as e:
-                print(f"Warning: FinBERT pipeline load fallback ({e}). Using rule-based financial sentiment classifier.")
+                print(f"Notice: FinBERT pipeline deferred or memory constrained ({e}). Using financial lexicon sentiment engine.")
                 self.sentiment_pipeline = None
+        return self.sentiment_pipeline
 
     def extract_entities(self, text: str) -> List[str]:
         """Extract financial corporate entities from news text."""
@@ -60,9 +60,10 @@ class FinancialNewsAnalyzer:
         sentiment_label = "Neutral"
         confidence = 0.85
         
-        if self.sentiment_pipeline is not None:
+        pipe = self._get_pipeline()
+        if pipe is not None:
             try:
-                res = self.sentiment_pipeline(text[:512])[0]
+                res = pipe(text[:512])[0]
                 sentiment_label = res['label'].capitalize()
                 confidence = float(res['score'])
             except Exception:

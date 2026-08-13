@@ -11,16 +11,6 @@ root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
 if root_dir not in sys.path:
     sys.path.insert(0, root_dir)
 
-from src.models.predict import RiskPredictor
-from src.explainability.shap_explainer import ShapRiskExplainer
-from src.rag.retrieval import RAGRetriever
-from src.llm.generator import CustomRAGGenerator
-from src.nlp.news_sentiment import FinancialNewsAnalyzer
-from src.recommendation.advisor import RiskAdvisorEngine
-from src.simulation.what_if import WhatIfSimulator
-from src.models.human_review import HumanReviewStore
-from src.data_processing.input_handler import InputHandler
-
 app = FastAPI(
     title="RiskLens AI API",
     description="Explainable Financial Risk & Compliance Intelligence Platform Backend API",
@@ -36,28 +26,75 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Global Service Singleton Container
+# Per-Service Lazy Instance Cache
 _services: Dict[str, Any] = {}
 
-def get_services() -> Dict[str, Any]:
-    """Lazy initialize and return all platform services."""
-    if not _services:
-        model_path = os.path.join(root_dir, "models/risk_model.pkl")
-        if not os.path.exists(model_path):
-            print("Model file missing. Triggering pipeline training...")
-            from src.models.train import train_and_save_pipeline
-            train_and_save_pipeline()
-            
+def get_predictor():
+    """Lazy initialize RiskPredictor on demand."""
+    if "predictor" not in _services:
+        from src.models.predict import RiskPredictor
         _services["predictor"] = RiskPredictor()
+    return _services["predictor"]
+
+def get_explainer():
+    """Lazy initialize ShapRiskExplainer on demand."""
+    if "explainer" not in _services:
+        from src.explainability.shap_explainer import ShapRiskExplainer
         _services["explainer"] = ShapRiskExplainer()
+    return _services["explainer"]
+
+def get_retriever():
+    """Lazy initialize RAGRetriever on demand."""
+    if "retriever" not in _services:
+        from src.rag.retrieval import RAGRetriever
         _services["retriever"] = RAGRetriever()
+    return _services["retriever"]
+
+def get_generator():
+    """Lazy initialize CustomRAGGenerator on demand."""
+    if "generator" not in _services:
+        from src.llm.generator import CustomRAGGenerator
         _services["generator"] = CustomRAGGenerator()
+    return _services["generator"]
+
+def get_news_analyzer():
+    """Lazy initialize FinancialNewsAnalyzer on demand."""
+    if "news_analyzer" not in _services:
+        from src.nlp.news_sentiment import FinancialNewsAnalyzer
         _services["news_analyzer"] = FinancialNewsAnalyzer()
+    return _services["news_analyzer"]
+
+def get_advisor():
+    """Lazy initialize RiskAdvisorEngine on demand."""
+    if "advisor" not in _services:
+        from src.recommendation.advisor import RiskAdvisorEngine
         _services["advisor"] = RiskAdvisorEngine()
+    return _services["advisor"]
+
+def get_simulator():
+    """Lazy initialize WhatIfSimulator on demand."""
+    if "simulator" not in _services:
+        from src.simulation.what_if import WhatIfSimulator
         _services["simulator"] = WhatIfSimulator()
+    return _services["simulator"]
+
+def get_review_store():
+    """Lazy initialize HumanReviewStore on demand."""
+    if "review_store" not in _services:
+        from src.models.human_review import HumanReviewStore
         _services["review_store"] = HumanReviewStore()
-        print("All RiskLens AI services successfully loaded.")
-        
+    return _services["review_store"]
+
+def get_services() -> Dict[str, Any]:
+    """Lazy initialize and return all platform services dictionary for backward compatibility."""
+    _services["predictor"] = get_predictor()
+    _services["explainer"] = get_explainer()
+    _services["retriever"] = get_retriever()
+    _services["generator"] = get_generator()
+    _services["news_analyzer"] = get_news_analyzer()
+    _services["advisor"] = get_advisor()
+    _services["simulator"] = get_simulator()
+    _services["review_store"] = get_review_store()
     return _services
 
 @app.on_event("startup")
@@ -119,7 +156,7 @@ class ReviewSubmissionSchema(BaseModel):
 
 @app.get("/health")
 def health_check():
-    """Health check endpoint."""
+    """Lightweight health check endpoint requiring zero ML/NLP/RAG memory overhead."""
     return {
         "status": "healthy",
         "service": "RiskLens AI Platform API",
@@ -130,8 +167,8 @@ def health_check():
 def predict_risk(data: TransactionSchema):
     """Predict financial transaction risk, anomaly score, combined assessment, & human review flag."""
     try:
-        services = get_services()
-        result = services["predictor"].predict_single(data.model_dump())
+        predictor = get_predictor()
+        result = predictor.predict_single(data.model_dump())
         return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -140,8 +177,8 @@ def predict_risk(data: TransactionSchema):
 def explain_risk(data: TransactionSchema):
     """Generate SHAP-based Explainable AI breakdown."""
     try:
-        services = get_services()
-        result = services["explainer"].explain_transaction(data.model_dump())
+        explainer = get_explainer()
+        result = explainer.explain_transaction(data.model_dump())
         return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -150,10 +187,10 @@ def explain_risk(data: TransactionSchema):
 def model_evaluation():
     """Return complete comparative performance metrics for all models."""
     try:
-        services = get_services()
+        predictor = get_predictor()
         return {
-            "all_model_metrics": services["predictor"].all_model_metrics,
-            "selected_model": services["predictor"].model_type,
+            "all_model_metrics": predictor.all_model_metrics,
+            "selected_model": predictor.model_type,
             "is_synthetic_data": True
         }
     except Exception as e:
@@ -163,13 +200,14 @@ def model_evaluation():
 async def upload_transactions_csv(file: UploadFile = File(...)):
     """Upload, validate, preprocess, and score batch transactions CSV file."""
     try:
+        from src.data_processing.input_handler import InputHandler
         contents = await file.read()
         valid, msg, df_clean = InputHandler.validate_and_clean_csv(io.BytesIO(contents))
         if not valid:
             raise HTTPException(status_code=400, detail=msg)
             
-        services = get_services()
-        df_scored = services["predictor"].predict_batch(df_clean)
+        predictor = get_predictor()
+        df_scored = predictor.predict_batch(df_clean)
         
         return {
             "status": "success",
@@ -187,13 +225,14 @@ async def upload_transactions_csv(file: UploadFile = File(...)):
 async def upload_document(file: UploadFile = File(...)):
     """Upload PDF or TXT financial report, parse, chunk, embed, and index into FAISS vector store."""
     try:
+        from src.data_processing.input_handler import InputHandler
         contents = await file.read()
-        services = get_services()
+        retriever = get_retriever()
         
         valid, msg, chunks = InputHandler.process_uploaded_document_bytes(
             file_name=file.filename,
             file_bytes=contents,
-            retriever_instance=services["retriever"]
+            retriever_instance=retriever
         )
         if not valid:
             raise HTTPException(status_code=400, detail=msg)
@@ -213,9 +252,10 @@ async def upload_document(file: UploadFile = File(...)):
 def retrieve_evidence(data: EvidenceQuerySchema):
     """Custom RAG retrieval and answer synthesis with evidence citations."""
     try:
-        services = get_services()
-        evidence_chunks = services["retriever"].retrieve(data.query, top_k=data.top_k)
-        response = services["generator"].generate_response(
+        retriever = get_retriever()
+        generator = get_generator()
+        evidence_chunks = retriever.retrieve(data.query, top_k=data.top_k)
+        response = generator.generate_response(
             query=data.query,
             retrieved_evidence=evidence_chunks,
             transaction_context=data.transaction_context
@@ -228,8 +268,8 @@ def retrieve_evidence(data: EvidenceQuerySchema):
 def analyze_news(data: NewsSchema):
     """Financial news FinBERT sentiment, entity & risk impact analysis."""
     try:
-        services = get_services()
-        result = services["news_analyzer"].analyze_news(data.text)
+        news_analyzer = get_news_analyzer()
+        result = news_analyzer.analyze_news(data.text)
         return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -238,8 +278,8 @@ def analyze_news(data: NewsSchema):
 def recommend_actions(data: RecommendationSchema):
     """AI recommendation engine for risk mitigation."""
     try:
-        services = get_services()
-        result = services["advisor"].generate_recommendations(
+        advisor = get_advisor()
+        result = advisor.generate_recommendations(
             risk_score=data.risk_score,
             shap_factors=data.shap_factors,
             retrieved_evidence=data.retrieved_evidence,
@@ -253,8 +293,8 @@ def recommend_actions(data: RecommendationSchema):
 def simulate_scenario(data: SimulationSchema):
     """What-if counterfactual scenario simulator."""
     try:
-        services = get_services()
-        result = services["simulator"].simulate_scenario(
+        simulator = get_simulator()
+        result = simulator.simulate_scenario(
             base_transaction=data.base_transaction,
             modified_params=data.modified_params
         )
@@ -266,8 +306,8 @@ def simulate_scenario(data: SimulationSchema):
 def review_transaction(data: ReviewSubmissionSchema):
     """Record Human-in-the-loop analyst review decision."""
     try:
-        services = get_services()
-        record = services["review_store"].record_review(
+        review_store = get_review_store()
+        record = review_store.record_review(
             transaction_id=data.transaction_id,
             transaction_details=data.transaction_details,
             risk_score=data.risk_score,
@@ -288,7 +328,7 @@ def review_transaction(data: ReviewSubmissionSchema):
 def get_reviews():
     """Retrieve all recorded human analyst reviews."""
     try:
-        services = get_services()
-        return {"reviews": services["review_store"].get_all_reviews()}
+        review_store = get_review_store()
+        return {"reviews": review_store.get_all_reviews()}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

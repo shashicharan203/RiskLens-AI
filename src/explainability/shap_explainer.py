@@ -1,6 +1,5 @@
 import os
 import joblib
-import shap
 import pandas as pd
 import numpy as np
 from typing import Dict, Any, List
@@ -31,21 +30,29 @@ FEATURE_DISPLAY_MAP = {
 }
 
 class ShapRiskExplainer:
-    """SHAP-based Explainable AI module for financial transaction risk scoring."""
+    """SHAP-based Explainable AI module for financial transaction risk scoring (Lazy-loaded)."""
 
     def __init__(self, model_path: str = "models/risk_model.pkl"):
         self.predictor = RiskPredictor(model_path=model_path)
         self.model = self.predictor.model
         self.feature_names = self.predictor.feature_names
-        
-        # Initialize SHAP explainer
-        try:
-            if hasattr(self.model, "predict_proba"):
-                self.explainer = shap.Explainer(self.model, feature_names=self.feature_names)
-            else:
-                self.explainer = shap.TreeExplainer(self.model)
-        except Exception:
-            self.explainer = None
+        self.explainer = None
+        self._initialized = False
+
+    def _get_explainer(self):
+        """Lazy load SHAP explainer engine on demand."""
+        if not self._initialized:
+            self._initialized = True
+            try:
+                import shap
+                if hasattr(self.model, "predict_proba"):
+                    self.explainer = shap.Explainer(self.model, feature_names=self.feature_names)
+                else:
+                    self.explainer = shap.TreeExplainer(self.model)
+            except Exception as e:
+                print(f"Notice: SHAP explainer fallback ({e}). Using feature importance attribution.")
+                self.explainer = None
+        return self.explainer
 
     def explain_transaction(self, input_dict: Dict[str, Any], top_k: int = 4) -> Dict[str, Any]:
         """Explain why a specific transaction is risky using SHAP feature attributions."""
@@ -61,13 +68,12 @@ class ShapRiskExplainer:
         X_proc['ae_anomaly_score'] = ae_score
         X_final = X_proc[self.feature_names]
         
-        feature_values = X_final.iloc[0].to_dict()
-        
         # Calculate SHAP values
         shap_vals_dict = {}
-        if self.explainer is not None:
+        explainer = self._get_explainer()
+        if explainer is not None:
             try:
-                shap_output = self.explainer(X_final)
+                shap_output = explainer(X_final)
                 if len(shap_output.values.shape) == 3:  # Binary classification output shape (1, num_features, 2)
                     shap_array = shap_output.values[0, :, 1]
                 else:

@@ -11,7 +11,7 @@ ENV/
 
 # Data & Models
 data/vector_store/
-models/*.pkl
+!models/risk_model.pkl
 models/*.pth
 *.faiss
 *.index
