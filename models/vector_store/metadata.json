@@ -1097,5 +1097,12 @@
     "document_name": "uploaded_policy.txt",
     "page_number": 1,
     "chunk_index": 0
+  },
+  {
+    "chunk_id": "uploaded_policy.txt_p1_c0",
+    "content": "LedgerMind Financial Risk Report: High risk accounts exhibit debt-to-income over 0.50.",
+    "document_name": "uploaded_policy.txt",
+    "page_number": 1,
+    "chunk_index": 0
   }
 ]

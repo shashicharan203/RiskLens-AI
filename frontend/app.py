@@ -1,25 +1,12 @@
 import os
-import sys
 import io
+import json
+import requests
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 import plotly.express as px
 import streamlit as st
-
-# Add root directory to path
-root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
-if root_dir not in sys.path:
-    sys.path.insert(0, root_dir)
-
-from src.models.predict import RiskPredictor
-from src.explainability.shap_explainer import ShapRiskExplainer
-from src.rag.retrieval import RAGRetriever
-from src.llm.generator import CustomRAGGenerator
-from src.nlp.news_sentiment import FinancialNewsAnalyzer
-from src.simulation.what_if import WhatIfSimulator
-from src.models.human_review import HumanReviewStore
-from src.data_processing.input_handler import InputHandler
 
 # Page Configuration
 st.set_page_config(
@@ -28,6 +15,34 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# Enterprise API Endpoint Configuration
+API_URL = os.getenv("RISKLENS_API_URL", "https://risklens-ai-2-t0zj.onrender.com").rstrip("/")
+
+def api_call(method: str, endpoint: str, json_data: dict = None, files: dict = None, timeout: int = 45):
+    """Centralized HTTP API client for communication with FastAPI backend."""
+    url = f"{API_URL}{endpoint}"
+    try:
+        if method.upper() == "GET":
+            resp = requests.get(url, timeout=timeout)
+        elif method.upper() == "POST":
+            if files:
+                resp = requests.post(url, files=files, timeout=timeout)
+            else:
+                resp = requests.post(url, json=json_data, timeout=timeout)
+        else:
+            return None, f"Unsupported HTTP method {method}"
+
+        if resp.status_code == 200:
+            return resp.json(), None
+        else:
+            try:
+                err_detail = resp.json().get("detail", resp.text)
+            except Exception:
+                err_detail = resp.text
+            return None, f"API Error ({resp.status_code}): {err_detail}"
+    except requests.exceptions.RequestException as e:
+        return None, "🚨 RiskLens backend is temporarily unavailable. Please try again later."
 
 # Custom Enterprise Styling
 st.markdown("""
@@ -119,25 +134,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Service Initialization with Caching
-@st.cache_resource
-def load_services():
-    model_path = os.path.join(root_dir, "models/risk_model.pkl")
-    if not os.path.exists(model_path):
-        from src.models.train import train_and_save_pipeline
-        train_and_save_pipeline()
-        
-    predictor = RiskPredictor()
-    explainer = ShapRiskExplainer()
-    retriever = RAGRetriever()
-    generator = CustomRAGGenerator()
-    news_analyzer = FinancialNewsAnalyzer()
-    simulator = WhatIfSimulator()
-    review_store = HumanReviewStore()
-    return predictor, explainer, retriever, generator, news_analyzer, simulator, review_store
-
-predictor, explainer, retriever, generator, news_analyzer, simulator, review_store = load_services()
-
 # --- Friendly Feature Name Mapping ---
 FRIENDLY_FEATURE_MAP = {
     "failed_login_attempts": "Multiple Failed Login Attempts",
@@ -170,6 +166,10 @@ if 'active_cust_name' not in st.session_state:
     st.session_state.active_cust_name = None
 if 'uploaded_batch_df' not in st.session_state:
     st.session_state.uploaded_batch_df = None
+if 'active_prediction' not in st.session_state:
+    st.session_state.active_prediction = None
+if 'active_explanation' not in st.session_state:
+    st.session_state.active_explanation = None
 
 # --- TOP PERSISTENT BRANDING & WORKFLOW ---
 st.markdown("<div class='main-title'>RiskLens AI</div>", unsafe_allow_html=True)
@@ -220,15 +220,15 @@ st.sidebar.caption("Upload bank policies, risk guidelines, or annual reports.")
 policy_doc_file = st.sidebar.file_uploader("Upload Policy (PDF/TXT)", type=["pdf", "txt"])
 
 if policy_doc_file is not None:
-    valid, msg, chunks = InputHandler.process_uploaded_document_bytes(
-        file_name=policy_doc_file.name,
-        file_bytes=policy_doc_file.read(),
-        retriever_instance=retriever
+    doc_res, err = api_call(
+        "POST", 
+        "/upload-document", 
+        files={"file": (policy_doc_file.name, policy_doc_file.read())}
     )
-    if valid:
-        st.sidebar.success(f"Indexed {len(chunks)} passages from '{policy_doc_file.name}'.")
+    if err:
+        st.sidebar.error(err)
     else:
-        st.sidebar.error(f"Upload error: {msg}")
+        st.sidebar.success(f"Indexed {doc_res.get('chunks_indexed', 0)} passages from '{policy_doc_file.name}'.")
 
 # Global Navigation Helpers
 def reset_to_input():
@@ -237,6 +237,8 @@ def reset_to_input():
     st.session_state.active_cust_id = None
     st.session_state.active_cust_name = None
     st.session_state.uploaded_batch_df = None
+    st.session_state.active_prediction = None
+    st.session_state.active_explanation = None
 
 # --- TAB 1: RISK ASSESSMENT (HOME / MAIN DASHBOARD) ---
 with nav_tabs[0]:
@@ -309,9 +311,9 @@ with nav_tabs[0]:
             c_id = cust_id_input.strip() if cust_id_input.strip() else "CUST_0042"
             c_name = cust_name_input.strip() if cust_name_input.strip() else "Example Customer"
             
-            st.session_state.active_cust_id = c_id
-            st.session_state.active_cust_name = c_name
-            st.session_state.active_tx_payload = {
+            payload = {
+                "customer_id": c_id,
+                "customer_name": c_name,
                 "transaction_amount": in_amt,
                 "transaction_frequency": in_freq,
                 "merchant_category": in_cat,
@@ -327,49 +329,82 @@ with nav_tabs[0]:
                 "failed_login_attempts": in_logins,
                 "device_risk_score": in_device
             }
-            st.session_state.has_submitted_data = True
+            
+            with st.spinner("Analyzing risk with RiskLens backend..."):
+                pred_res, p_err = api_call("POST", "/predict-risk", json_data=payload)
+                expl_res, e_err = api_call("POST", "/explain-risk", json_data=payload)
+
+            if p_err or e_err:
+                st.error(p_err or e_err)
+            else:
+                st.session_state.active_cust_id = c_id
+                st.session_state.active_cust_name = c_name
+                st.session_state.active_tx_payload = payload
+                st.session_state.active_prediction = pred_res
+                st.session_state.active_explanation = expl_res
+                st.session_state.has_submitted_data = True
 
     else:
         st.caption("Upload a CSV file containing customer transaction records.")
         csv_file = st.file_uploader("Upload Transactions CSV", type=["csv"])
         
         if csv_file is not None:
-            valid, msg, df_clean = InputHandler.validate_and_clean_csv(csv_file)
-            if valid:
-                st.success(f"CSV Processed: {msg}")
-                df_scored = predictor.predict_batch(df_clean)
+            with st.spinner("Processing batch CSV with RiskLens backend..."):
+                batch_res, b_err = api_call(
+                    "POST", 
+                    "/upload-transactions-csv", 
+                    files={"file": (csv_file.name, csv_file.read())}
+                )
+            if b_err:
+                st.error(b_err)
+            else:
+                predictions = batch_res.get("predictions", [])
+                df_scored = pd.DataFrame(predictions)
                 st.session_state.uploaded_batch_df = df_scored
                 
+                st.success(f"CSV Processed: {batch_res.get('message', 'Success')}")
                 st.markdown("#### Transaction Batch Risk Summary")
                 b_c1, b_c2, b_c3, b_c4 = st.columns(4)
-                b_c1.metric("Total Transactions", len(df_scored))
-                b_c2.metric("High Risk Count", int((df_scored["risk_level"] == "HIGH").sum()))
-                b_c3.metric("Medium Risk Count", int((df_scored["risk_level"] == "MEDIUM").sum()))
-                b_c4.metric("Average Risk Score", f"{df_scored['risk_score'].mean():.2%}")
+                b_c1.metric("Total Transactions", batch_res.get("total_transactions", len(df_scored)))
+                b_c2.metric("High Risk Count", batch_res.get("high_risk_count", 0))
+                b_c3.metric("Medium Risk Count", int((df_scored["risk_level"] == "MEDIUM").sum()) if not df_scored.empty else 0)
+                b_c4.metric("Average Risk Score", f"{df_scored['risk_score'].mean():.2%}" if not df_scored.empty else "0.0%")
                 
-                display_table = df_scored[['customer_id', 'customer_name', 'transaction_amount', 'risk_score', 'risk_level']].rename(columns={
-                    'customer_id': 'Customer ID',
-                    'customer_name': 'Customer Name',
-                    'transaction_amount': 'Transaction Amount ($)',
-                    'risk_score': 'Risk Score',
-                    'risk_level': 'Risk Level'
-                })
-                st.dataframe(display_table)
-                
-                st.markdown("#### Select Customer for Full Pipeline Evaluation")
-                selected_row = st.selectbox(
-                    "Select Customer Transaction",
-                    options=list(range(len(df_scored))),
-                    format_func=lambda idx: f"{df_scored.iloc[idx]['customer_id']} ({df_scored.iloc[idx]['customer_name']}) - ${df_scored.iloc[idx]['transaction_amount']:,.2f} [Risk: {df_scored.iloc[idx]['risk_level']}]"
-                )
-                
-                if st.button("Inspect Selected Customer Pipeline", type="primary"):
-                    st.session_state.active_cust_id = str(df_scored.iloc[selected_row]['customer_id'])
-                    st.session_state.active_cust_name = str(df_scored.iloc[selected_row]['customer_name'])
-                    st.session_state.active_tx_payload = df_scored.iloc[selected_row].to_dict()
-                    st.session_state.has_submitted_data = True
-            else:
-                st.error(f"Unable to process CSV file: {msg}")
+                if not df_scored.empty:
+                    display_table = df_scored[['customer_id', 'customer_name', 'transaction_amount', 'risk_score', 'risk_level']].rename(columns={
+                        'customer_id': 'Customer ID',
+                        'customer_name': 'Customer Name',
+                        'transaction_amount': 'Transaction Amount ($)',
+                        'risk_score': 'Risk Score',
+                        'risk_level': 'Risk Level'
+                    })
+                    st.dataframe(display_table)
+                    
+                    st.markdown("#### Select Customer for Full Pipeline Evaluation")
+                    selected_row = st.selectbox(
+                        "Select Customer Transaction",
+                        options=list(range(len(df_scored))),
+                        format_func=lambda idx: f"{df_scored.iloc[idx]['customer_id']} ({df_scored.iloc[idx]['customer_name']}) - ${df_scored.iloc[idx]['transaction_amount']:,.2f} [Risk: {df_scored.iloc[idx]['risk_level']}]"
+                    )
+                    
+                    if st.button("Inspect Selected Customer Pipeline", type="primary"):
+                        selected_tx = df_scored.iloc[selected_row].to_dict()
+                        c_id = str(selected_tx.get('customer_id', 'CUST_0042'))
+                        c_name = str(selected_tx.get('customer_name', 'Anonymous Customer'))
+                        
+                        with st.spinner("Fetching customer pipeline telemetry..."):
+                            pred_res, p_err = api_call("POST", "/predict-risk", json_data=selected_tx)
+                            expl_res, e_err = api_call("POST", "/explain-risk", json_data=selected_tx)
+                            
+                        if p_err or e_err:
+                            st.error(p_err or e_err)
+                        else:
+                            st.session_state.active_cust_id = c_id
+                            st.session_state.active_cust_name = c_name
+                            st.session_state.active_tx_payload = selected_tx
+                            st.session_state.active_prediction = pred_res
+                            st.session_state.active_explanation = expl_res
+                            st.session_state.has_submitted_data = True
 
     # Display Initial Neutral State if No Customer Data Submitted
     if not st.session_state.has_submitted_data:
@@ -391,125 +426,132 @@ with nav_tabs[0]:
         c_id = st.session_state.active_cust_id or "CUST_0042"
         c_name = st.session_state.active_cust_name or "Anonymous Customer"
 
-        prediction = predictor.predict_single(tx_payload)
-        explanation = explainer.explain_transaction(tx_payload)
+        prediction = st.session_state.active_prediction
+        explanation = st.session_state.active_explanation
 
-        requires_review = prediction.get('requires_human_review', (
-            prediction.get('risk_level') == "HIGH" or 
-            prediction.get('anomaly_status') == "HIGHLY ANOMALOUS" or 
-            prediction.get('combined_risk_level') == "HIGH"
-        ))
+        if prediction and explanation:
+            requires_review = prediction.get('requires_human_review', (
+                prediction.get('risk_level') == "HIGH" or 
+                prediction.get('anomaly_status') == "HIGHLY ANOMALOUS" or 
+                prediction.get('combined_risk_level') == "HIGH"
+            ))
 
-        # Workflow Breadcrumb Indicator
-        st.markdown("""
-        <div style='background-color:#F1F5F9; padding:8px 14px; border-radius:6px; font-weight:700; font-size:0.85rem; color:#334155; margin-bottom:16px;'>
-            INPUT ➔ RISK PREDICTION ➔ ANOMALY DETECTION ➔ EXPLANATION ➔ POLICY EVIDENCE ➔ HUMAN REVIEW
-        </div>
-        """, unsafe_allow_html=True)
+            # Workflow Breadcrumb Indicator
+            st.markdown("""
+            <div style='background-color:#F1F5F9; padding:8px 14px; border-radius:6px; font-weight:700; font-size:0.85rem; color:#334155; margin-bottom:16px;'>
+                INPUT ➔ RISK PREDICTION ➔ ANOMALY DETECTION ➔ EXPLANATION ➔ POLICY EVIDENCE ➔ HUMAN REVIEW
+            </div>
+            """, unsafe_allow_html=True)
 
-        if requires_review:
-            st.markdown(
-                "<div class='review-alert-banner'>🚨 REQUIRES HUMAN REVIEW<br/>"
-                f"<span style='font-size: 0.9rem; font-weight: 400;'>Customer {c_id} exhibits elevated risk ({int(prediction['risk_score']*100)}%) or deep anomaly signals requiring analyst decision.</span></div>",
-                unsafe_allow_html=True
-            )
+            if requires_review:
+                st.markdown(
+                    "<div class='review-alert-banner'>🚨 REQUIRES HUMAN REVIEW<br/>"
+                    f"<span style='font-size: 0.9rem; font-weight: 400;'>Customer {c_id} exhibits elevated risk ({int(prediction['risk_score']*100)}%) or deep anomaly signals requiring analyst decision.</span></div>",
+                    unsafe_allow_html=True
+                )
 
-        # Customer Header Profile
-        st.markdown(f"#### Customer Profile: **{c_id}** ({c_name})")
+            # Customer Header Profile
+            st.markdown(f"#### Customer Profile: **{c_id}** ({c_name})")
 
-        # Risk Score Metric Cards
-        r_col1, r_col2, r_col3 = st.columns(3)
-        
-        with r_col1:
-            st.markdown("##### Supervised Risk Score")
-            st.markdown(f"<div class='metric-box'><h2 style='color:#1E3A8A; margin:0;'>{int(prediction['risk_score']*100)}%</h2><p style='margin:0; font-weight:700;'>{prediction['risk_level']}</p></div>", unsafe_allow_html=True)
+            # Risk Score Metric Cards
+            r_col1, r_col2, r_col3 = st.columns(3)
+            
+            with r_col1:
+                st.markdown("##### Supervised Risk Score")
+                st.markdown(f"<div class='metric-box'><h2 style='color:#1E3A8A; margin:0;'>{int(prediction['risk_score']*100)}%</h2><p style='margin:0; font-weight:700;'>{prediction['risk_level']}</p></div>", unsafe_allow_html=True)
 
-        with r_col2:
-            st.markdown("##### Anomaly Status")
-            st.markdown(f"<div class='metric-box'><h2 style='color:#7C3AED; margin:0;'>{int(prediction['anomaly_score']*100)}%</h2><p style='margin:0; font-weight:700;'>{prediction['anomaly_status']}</p></div>", unsafe_allow_html=True)
+            with r_col2:
+                st.markdown("##### Anomaly Status")
+                st.markdown(f"<div class='metric-box'><h2 style='color:#7C3AED; margin:0;'>{int(prediction['anomaly_score']*100)}%</h2><p style='margin:0; font-weight:700;'>{prediction['anomaly_status']}</p></div>", unsafe_allow_html=True)
 
-        with r_col3:
-            st.markdown("##### Combined Risk Level")
-            comb_level = prediction['combined_risk_level']
-            b_class = "badge-high" if comb_level == "HIGH" else ("badge-medium" if comb_level == "MEDIUM" else "badge-low")
-            st.markdown(f"<div class='metric-box'><h2 style='color:#0F172A; margin:0;'>{int(prediction['combined_risk_score']*100)}%</h2><p style='margin:4px;'><span class='{b_class}'>{comb_level} RISK</span></p></div>", unsafe_allow_html=True)
+            with r_col3:
+                st.markdown("##### Combined Risk Level")
+                comb_level = prediction['combined_risk_level']
+                b_class = "badge-high" if comb_level == "HIGH" else ("badge-medium" if comb_level == "MEDIUM" else "badge-low")
+                st.markdown(f"<div class='metric-box'><h2 style='color:#0F172A; margin:0;'>{int(prediction['combined_risk_score']*100)}%</h2><p style='margin:4px;'><span class='{b_class}'>{comb_level} RISK</span></p></div>", unsafe_allow_html=True)
 
-        st.markdown("---")
-        st.subheader("Why is this customer high risk?")
-        st.caption("Key risk factors influencing the model's prediction.")
+            st.markdown("---")
+            st.subheader("Why is this customer high risk?")
+            st.caption("Key risk factors influencing the model's prediction.")
 
-        factors = explanation['important_factors']
-        s_col1, s_col2 = st.columns(2)
+            factors = explanation.get('important_factors', [])
+            s_col1, s_col2 = st.columns(2)
 
-        with s_col1:
-            st.markdown("##### Risk-Increasing Factors")
-            inc_f = [f for f in factors if f.startswith("+")]
-            if inc_f:
-                for f in inc_f:
-                    clean_f = f.replace("+", "").strip()
-                    st.error(f"• {clean_f}")
-            else:
-                st.write("No major risk-increasing factors.")
+            with s_col1:
+                st.markdown("##### Risk-Increasing Factors")
+                inc_f = [f for f in factors if f.startswith("+")]
+                if inc_f:
+                    for f in inc_f:
+                        clean_f = f.replace("+", "").strip()
+                        st.error(f"• {clean_f}")
+                else:
+                    st.write("No major risk-increasing factors.")
 
-        with s_col2:
-            st.markdown("##### Risk-Reducing Factors")
-            red_f = [f for f in factors if f.startswith("-")]
-            if red_f:
-                for f in red_f:
-                    clean_f = f.replace("-", "").strip()
-                    st.success(f"• {clean_f}")
-            else:
-                st.write("Standard account parameters.")
+            with s_col2:
+                st.markdown("##### Risk-Reducing Factors")
+                red_f = [f for f in factors if f.startswith("-")]
+                if red_f:
+                    for f in red_f:
+                        clean_f = f.replace("-", "").strip()
+                        st.success(f"• {clean_f}")
+                else:
+                    st.write("Standard account parameters.")
 
-        # Clean SHAP Factor Chart
-        shap_raw = dict(list(explanation['shap_values'].items())[:6])
-        friendly_shap = {FRIENDLY_FEATURE_MAP.get(k, k.replace("_", " ").title()): v for k, v in shap_raw.items()}
-        df_shap = pd.DataFrame({"Risk Factor": list(friendly_shap.keys()), "Impact": list(friendly_shap.values())}).sort_values("Impact", ascending=True)
-        
-        fig_shap = px.bar(df_shap, x="Impact", y="Risk Factor", orientation="h", title="SHAP Risk Factor Contribution Chart", color="Impact", color_continuous_scale=["#10B981", "#EF4444"])
-        fig_shap.update_layout(height=260, margin=dict(l=10, r=10, t=30, b=10))
-        st.plotly_chart(fig_shap, use_container_width=True)
+            # Clean SHAP Factor Chart
+            shap_raw = dict(list(explanation.get('shap_values', {}).items())[:6])
+            friendly_shap = {FRIENDLY_FEATURE_MAP.get(k, k.replace("_", " ").title()): v for k, v in shap_raw.items()}
+            df_shap = pd.DataFrame({"Risk Factor": list(friendly_shap.keys()), "Impact": list(friendly_shap.values())}).sort_values("Impact", ascending=True)
+            
+            fig_shap = px.bar(df_shap, x="Impact", y="Risk Factor", orientation="h", title="SHAP Risk Factor Contribution Chart", color="Impact", color_continuous_scale=["#10B981", "#EF4444"])
+            fig_shap.update_layout(height=260, margin=dict(l=10, r=10, t=30, b=10))
+            st.plotly_chart(fig_shap, use_container_width=True)
 
 # --- TAB 2: MODEL PERFORMANCE ---
 with nav_tabs[1]:
     st.subheader("Model Performance & Algorithm Evaluation")
     st.caption("Comparative evaluation metrics across risk classifiers and PyTorch Deep Autoencoder.")
     
-    all_m = predictor.all_model_metrics
-    if all_m:
-        rows = []
-        for name, m in all_m.items():
-            rows.append({
-                "Model Algorithm": name.replace("_", " ").title(),
-                "Accuracy": f"{m.get('accuracy', 0.0):.4f}",
-                "Precision": f"{m.get('precision', 0.0):.4f}",
-                "Recall": f"{m.get('recall', 0.0):.4f}",
-                "F1 Score": f"{m.get('f1_score', 0.0):.4f}",
-                "ROC-AUC": f"{m.get('roc_auc', 0.0):.4f}"
-            })
-        st.table(pd.DataFrame(rows))
+    with st.spinner("Fetching model evaluation metrics from backend..."):
+        eval_res, eval_err = api_call("GET", "/model-evaluation")
         
-        col_m1, col_m2 = st.columns(2)
-        with col_m1:
-            st.markdown("##### ROC-AUC Performance Curves")
-            fig_roc = go.Figure()
+    if eval_err:
+        st.error(eval_err)
+    elif eval_res:
+        all_m = eval_res.get("all_model_metrics", {})
+        if all_m:
+            rows = []
             for name, m in all_m.items():
-                c = m.get("roc_curve", {})
-                if c:
-                    fig_roc.add_trace(go.Scatter(x=c.get("fpr", []), y=c.get("tpr", []), mode='lines', name=f"{name.title()} ({m.get('roc_auc', 0):.2f})"))
-            fig_roc.add_trace(go.Scatter(x=[0, 1], y=[0, 1], mode='lines', line=dict(dash='dash', color='gray'), name='Baseline'))
-            fig_roc.update_layout(xaxis_title="False Positive Rate", yaxis_title="True Positive Rate", height=320)
-            st.plotly_chart(fig_roc, use_container_width=True)
+                rows.append({
+                    "Model Algorithm": name.replace("_", " ").title(),
+                    "Accuracy": f"{m.get('accuracy', 0.0):.4f}",
+                    "Precision": f"{m.get('precision', 0.0):.4f}",
+                    "Recall": f"{m.get('recall', 0.0):.4f}",
+                    "F1 Score": f"{m.get('f1_score', 0.0):.4f}",
+                    "ROC-AUC": f"{m.get('roc_auc', 0.0):.4f}"
+                })
+            st.table(pd.DataFrame(rows))
             
-        with col_m2:
-            st.markdown("##### Autoencoder Anomaly Summary")
-            ae_m = all_m.get("AUTOENCODER", {})
-            st.json({
-                "Reconstruction Mean Error": f"{predictor.ae_stats.get('mean', 0.5):.4f}",
-                "Reconstruction Std Deviation": f"{predictor.ae_stats.get('std', 0.8):.4f}",
-                "Autoencoder Accuracy": f"{ae_m.get('accuracy', 0.0):.4f}",
-                "Autoencoder ROC-AUC": f"{ae_m.get('roc_auc', 0.0):.4f}"
-            })
+            col_m1, col_m2 = st.columns(2)
+            with col_m1:
+                st.markdown("##### ROC-AUC Performance Curves")
+                fig_roc = go.Figure()
+                for name, m in all_m.items():
+                    c = m.get("roc_curve", {})
+                    if c:
+                        fig_roc.add_trace(go.Scatter(x=c.get("fpr", []), y=c.get("tpr", []), mode='lines', name=f"{name.title()} ({m.get('roc_auc', 0):.2f})"))
+                fig_roc.add_trace(go.Scatter(x=[0, 1], y=[0, 1], mode='lines', line=dict(dash='dash', color='gray'), name='Baseline'))
+                fig_roc.update_layout(xaxis_title="False Positive Rate", yaxis_title="True Positive Rate", height=320)
+                st.plotly_chart(fig_roc, use_container_width=True)
+                
+            with col_m2:
+                st.markdown("##### Autoencoder Anomaly Summary")
+                ae_m = all_m.get("autoencoder", all_m.get("AUTOENCODER", {}))
+                st.json({
+                    "Reconstruction Baseline Mean": f"{ae_m.get('reconstruction_mean', 0.5):.4f}",
+                    "Reconstruction Baseline Std": f"{ae_m.get('reconstruction_std', 0.8):.4f}",
+                    "Autoencoder Accuracy": f"{ae_m.get('accuracy', 0.0):.4f}",
+                    "Autoencoder ROC-AUC": f"{ae_m.get('roc_auc', 0.0):.4f}"
+                })
 
 # --- TAB 3: POLICY EVIDENCE (CONTEXT-AWARE CUSTOM RAG) ---
 with nav_tabs[2]:
@@ -519,13 +561,12 @@ with nav_tabs[2]:
     if st.session_state.has_submitted_data and st.session_state.active_tx_payload is not None:
         c_id = st.session_state.active_cust_id or "CUST_0042"
         c_name = st.session_state.active_cust_name or "Anonymous Customer"
-        tx_p = st.session_state.active_tx_payload
-        pred = predictor.predict_single(tx_p)
-        expl = explainer.explain_transaction(tx_p)
+        pred = st.session_state.active_prediction or {}
+        expl = st.session_state.active_explanation or {}
         
         st.markdown(f"""
         <div class='context-box'>
-            📋 <b>Active Customer Risk Context:</b> {c_id} ({c_name}) | <b>Risk Score:</b> {int(pred['risk_score']*100)}% ({pred['risk_level']}) | <b>Anomaly Status:</b> {pred['anomaly_status']}
+            📋 <b>Active Customer Risk Context:</b> {c_id} ({c_name}) | <b>Risk Score:</b> {int(pred.get('risk_score', 0.0)*100)}% ({pred.get('risk_level', 'LOW')}) | <b>Anomaly Status:</b> {pred.get('anomaly_status', 'NORMAL')}
         </div>
         """, unsafe_allow_html=True)
         
@@ -533,10 +574,10 @@ with nav_tabs[2]:
         customer_context = {
             "customer_id": c_id,
             "customer_name": c_name,
-            "risk_score": pred['risk_score'],
-            "risk_level": pred['risk_level'],
-            "anomaly_status": pred['anomaly_status'],
-            "important_factors": expl['important_factors']
+            "risk_score": pred.get('risk_score', 0.0),
+            "risk_level": pred.get('risk_level', 'LOW'),
+            "anomaly_status": pred.get('anomaly_status', 'NORMAL'),
+            "important_factors": expl.get('important_factors', [])
         }
     else:
         st.info("ℹ️ No customer active. RAG queries will retrieve general policy evidence.")
@@ -546,32 +587,38 @@ with nav_tabs[2]:
     rag_q_input = st.text_input("Enter Policy Evidence Question", value=default_q)
     
     if st.button("Search Policy Evidence & Synthesize", type="primary"):
-        retrieved_docs = retriever.retrieve(rag_q_input, top_k=4)
-        rag_res = generator.generate_response(
-            query=rag_q_input,
-            retrieved_evidence=retrieved_docs,
-            transaction_context=customer_context
-        )
-        
-        st.markdown("#### Evidence-Based Policy Answer")
-        st.markdown(rag_res['answer'])
-        
-        st.markdown("#### Policy Evidence Cards")
-        for idx, ev in enumerate(retrieved_docs, 1):
-            doc_n = ev.get('document_name', 'Bank_Risk_Policy.txt')
-            page_n = ev.get('page_number', 1)
-            content_n = ev.get('content', '').strip()
-            sec_n = "Authentication" if "login" in content_n.lower() else ("Device Risk" if "device" in content_n.lower() else "Compliance Guidelines")
+        with st.spinner("Retrieving grounded policy evidence from backend..."):
+            rag_res, r_err = api_call(
+                "POST", 
+                "/retrieve-evidence", 
+                json_data={
+                    "query": rag_q_input,
+                    "top_k": 4,
+                    "transaction_context": customer_context
+                }
+            )
+        if r_err:
+            st.error(r_err)
+        elif rag_res:
+            st.markdown("#### Evidence-Based Policy Answer")
+            st.markdown(rag_res.get('answer', ''))
             
-            st.markdown(f"""
-            <div style='background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #10B981; border-radius:6px; padding:12px; margin-bottom:12px;'>
-                <div style='font-weight:700; font-size:0.95rem; color:#0F172A;'>✓ Rule {idx} — {sec_n}</div>
-                <div style='font-size:0.9rem; color:#334155; margin:6px 0;'>{content_n}</div>
-                <div style='font-size:0.82rem; color:#64748B;'><b>Source:</b> {doc_n} &nbsp;|&nbsp; <b>Section:</b> {sec_n}</div>
-            </div>
-            """, unsafe_allow_html=True)
-            st.markdown(f"**Source Document:** `{ev.get('document_name')}` (Page {ev.get('page_number')})")
-            st.info(ev.get('content'))
+            retrieved_docs = rag_res.get('evidence', [])
+            if retrieved_docs:
+                st.markdown("#### Policy Evidence Cards")
+                for idx, ev in enumerate(retrieved_docs, 1):
+                    doc_n = ev.get('document_name', 'Bank_Risk_Policy.txt')
+                    page_n = ev.get('page_number', 1)
+                    content_n = ev.get('content', '').strip()
+                    sec_n = "Authentication" if "login" in content_n.lower() else ("Device Risk" if "device" in content_n.lower() else "Compliance Guidelines")
+                    
+                    st.markdown(f"""
+                    <div style='background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #10B981; border-radius:6px; padding:12px; margin-bottom:12px;'>
+                        <div style='font-weight:700; font-size:0.95rem; color:#0F172A;'>✓ Rule {idx} — {sec_n}</div>
+                        <div style='font-size:0.9rem; color:#334155; margin:6px 0;'>{content_n}</div>
+                        <div style='font-size:0.82rem; color:#64748B;'><b>Source:</b> {doc_n} (Page {page_n}) &nbsp;|&nbsp; <b>Section:</b> {sec_n}</div>
+                    </div>
+                    """, unsafe_allow_html=True)
 
 # --- TAB 4: FINANCIAL NEWS ---
 with nav_tabs[3]:
@@ -580,11 +627,16 @@ with nav_tabs[3]:
     
     news_text_in = st.text_area("Enter Financial News Text", value="Apex Financial Group faces quarterly loss as non-performing assets rise 18%.", height=90)
     if st.button("Analyze News Sentiment"):
-        news_out = news_analyzer.analyze_news(news_text_in)
-        n_c1, n_c2, n_c3 = st.columns(3)
-        n_c1.metric("Sentiment", news_out['sentiment'])
-        n_c2.metric("Target Entity", news_out['entity'])
-        n_c3.metric("Risk Impact Level", news_out['impact'])
+        with st.spinner("Analyzing news sentiment with FinBERT backend..."):
+            news_out, n_err = api_call("POST", "/analyze-news", json_data={"text": news_text_in})
+            
+        if n_err:
+            st.error(n_err)
+        elif news_out:
+            n_c1, n_c2, n_c3 = st.columns(3)
+            n_c1.metric("Sentiment", news_out.get('sentiment', 'Neutral'))
+            n_c2.metric("Target Entity", news_out.get('entity', 'Company'))
+            n_c3.metric("Risk Impact Level", news_out.get('impact', 'Low Risk'))
 
 # --- TAB 5: WHAT-IF ANALYSIS ---
 with nav_tabs[4]:
@@ -616,33 +668,49 @@ with nav_tabs[4]:
     with w_col4:
         scen_dti = st.slider("Scenario Debt-to-Income", 0.05, 0.95, float(base_p.get('debt_to_income', 0.65)), 0.05)
 
-    sim_out = simulator.simulate_scenario(base_p, {
-        "transaction_amount": scen_amt,
-        "avg_monthly_income": scen_income,
-        "interest_rate": scen_ir,
-        "debt_to_income": scen_dti
-    })
+    if st.button("Run Counterfactual Simulation", type="primary"):
+        with st.spinner("Simulating scenario deltas on backend..."):
+            sim_out, s_err = api_call(
+                "POST", 
+                "/simulate", 
+                json_data={
+                    "base_transaction": base_p,
+                    "modified_params": {
+                        "transaction_amount": scen_amt,
+                        "avg_monthly_income": scen_income,
+                        "interest_rate": scen_ir,
+                        "debt_to_income": scen_dti
+                    }
+                }
+            )
+        if s_err:
+            st.error(s_err)
+        elif sim_out:
+            wc_1, wc_2, wc_3, wc_4 = st.columns(4)
+            wc_1.metric("Current Risk Score", f"{int(sim_out['baseline']['risk_score']*100)}%")
+            wc_2.metric("Scenario Risk Score", f"{int(sim_out['scenario']['risk_score']*100)}%")
+            wc_3.metric("Risk Delta", f"{sim_out['delta']['percentage_change']:+.1f}%")
+            wc_4.metric("Direction", sim_out['delta']['direction'])
 
-    wc_1, wc_2, wc_3, wc_4 = st.columns(4)
-    wc_1.metric("Current Risk Score", f"{int(sim_out['baseline']['risk_score']*100)}%")
-    wc_2.metric("Scenario Risk Score", f"{int(sim_out['scenario']['risk_score']*100)}%")
-    wc_3.metric("Risk Delta", f"{sim_out['delta']['percentage_change']:+.1f}%")
-    wc_4.metric("Direction", sim_out['delta']['direction'])
-
-    st.markdown("##### Impact Summary")
-    st.info(sim_out['impact_summary'])
+            st.markdown("##### Impact Summary")
+            st.info(sim_out.get('impact_summary', ''))
 
 # --- TAB 6: HUMAN REVIEW ---
 with nav_tabs[5]:
     st.subheader("Human Review Portal")
     st.caption("Human analyst case evaluation, policy evidence verification, and decision logging.")
     
+    # Fetch Past Decision History from Backend
+    with st.spinner("Fetching case decision history..."):
+        rev_hist_res, h_err = api_call("GET", "/reviews")
+    past_logs = rev_hist_res.get("reviews", []) if rev_hist_res else []
+    
     if st.session_state.has_submitted_data and st.session_state.active_tx_payload is not None:
         c_id = st.session_state.active_cust_id or "CUST_0042"
         c_name = st.session_state.active_cust_name or "Anonymous Customer"
         tx_p = st.session_state.active_tx_payload
-        pred = predictor.predict_single(tx_p)
-        expl = explainer.explain_transaction(tx_p)
+        pred = st.session_state.active_prediction or {}
+        expl = st.session_state.active_explanation or {}
         
         col_hr1, col_hr2 = st.columns([1.5, 1])
         
@@ -651,10 +719,10 @@ with nav_tabs[5]:
             st.json({
                 "Customer ID": c_id,
                 "Customer Name": c_name,
-                "Risk Score": f"{int(pred['risk_score']*100)}% ({pred['risk_level']})",
-                "Anomaly Status": f"{int(pred['anomaly_score']*100)}% ({pred['anomaly_status']})",
-                "Combined Assessment": f"{pred['combined_risk_level']} RISK",
-                "Top Risk Factors": [f.replace("+", "").strip() for f in expl['important_factors'] if f.startswith("+")][:3]
+                "Risk Score": f"{int(pred.get('risk_score', 0.0)*100)}% ({pred.get('risk_level', 'LOW')})",
+                "Anomaly Status": f"{int(pred.get('anomaly_score', 0.0)*100)}% ({pred.get('anomaly_status', 'NORMAL')})",
+                "Combined Assessment": f"{pred.get('combined_risk_level', 'LOW')} RISK",
+                "Top Risk Factors": [f.replace("+", "").strip() for f in expl.get('important_factors', []) if f.startswith("+")][:3]
             })
             
             st.markdown("##### Analyst Decision Form")
@@ -676,27 +744,44 @@ with nav_tabs[5]:
                     d_choice = "REQUEST VERIFICATION"
                     
                 if d_choice:
-                    rec_log = review_store.record_review(
-                        transaction_id=c_id,
-                        transaction_details=tx_p,
-                        risk_score=pred['risk_score'],
-                        anomaly_score=pred['anomaly_score'],
-                        decision=d_choice,
-                        comments=analyst_notes,
-                        analyst_id=analyst_id_val
+                    sub_res, sub_err = api_call(
+                        "POST", 
+                        "/review-transaction", 
+                        json_data={
+                            "transaction_id": c_id,
+                            "transaction_details": tx_p,
+                            "risk_score": pred.get('risk_score', 0.0),
+                            "anomaly_score": pred.get('anomaly_score', 0.0),
+                            "decision": d_choice,
+                            "comments": analyst_notes,
+                            "analyst_id": analyst_id_val,
+                            "shap_factors": expl.get('important_factors', [])
+                        }
                     )
-                    st.success(f"Decision '{d_choice}' logged for Customer {c_id}. Case ID: {rec_log['review_id']}.")
+                    if sub_err:
+                        st.error(sub_err)
+                    else:
+                        rec_record = sub_res.get("review_record", {})
+                        st.success(f"Decision '{d_choice}' logged for Customer {c_id}. Case ID: {rec_record.get('review_id', 'REV_0001')}.")
+                        st.rerun()
 
         with col_hr2:
             st.markdown("##### Case Decision History")
-            past_logs = review_store.get_all_reviews()
             if past_logs:
                 for r in reversed(past_logs[-5:]):
-                    ico = "🔴" if r['decision'] == "REJECT" else ("🟢" if r['decision'] == "APPROVE" else "🟡")
-                    with st.expander(f"{ico} {r['transaction_id']} - {r['decision']}"):
-                        st.write(f"**Analyst:** {r['analyst_id']}")
-                        st.write(f"**Notes:** {r['comments']}")
+                    ico = "🔴" if r.get('decision') == "REJECT" else ("🟢" if r.get('decision') == "APPROVE" else "🟡")
+                    with st.expander(f"{ico} {r.get('transaction_id')} - {r.get('decision')}"):
+                        st.write(f"**Analyst:** {r.get('analyst_id')}")
+                        st.write(f"**Notes:** {r.get('comments')}")
             else:
                 st.info("No cases reviewed yet.")
     else:
-        st.info("ℹ️ **No customer transaction submitted.** Submit customer details in the **Risk Assessment** tab to evaluate cases requiring human review.")
+        st.markdown("##### Case Decision History")
+        if past_logs:
+            for r in reversed(past_logs[-5:]):
+                ico = "🔴" if r.get('decision') == "REJECT" else ("🟢" if r.get('decision') == "APPROVE" else "🟡")
+                with st.expander(f"{ico} {r.get('transaction_id')} - {r.get('decision')}"):
+                    st.write(f"**Analyst:** {r.get('analyst_id')}")
+                    st.write(f"**Notes:** {r.get('comments')}")
+        else:
+            st.info("ℹ️ **No customer transaction submitted.** Submit customer details in the **Risk Assessment** tab to evaluate cases requiring human review.")
