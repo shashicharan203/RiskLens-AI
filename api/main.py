@@ -1,6 +1,7 @@
 import os
 import sys
 import io
+import json
 from typing import Dict, Any, List, Optional
 from fastapi import FastAPI, HTTPException, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
@@ -209,12 +210,15 @@ async def upload_transactions_csv(file: UploadFile = File(...)):
         predictor = get_predictor()
         df_scored = predictor.predict_batch(df_clean)
         
+        # Ensure clean, standard JSON serialization (handling NaN/Inf values)
+        records = json.loads(df_scored.to_json(orient="records"))
+        
         return {
             "status": "success",
             "message": msg,
-            "total_transactions": len(df_scored),
-            "high_risk_count": int((df_scored["risk_level"] == "HIGH").sum()),
-            "predictions": df_scored.to_dict(orient="records")
+            "total_transactions": len(records),
+            "high_risk_count": int(sum(1 for r in records if r.get("risk_level") == "HIGH")),
+            "predictions": records
         }
     except HTTPException:
         raise

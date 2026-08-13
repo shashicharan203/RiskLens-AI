@@ -5,9 +5,6 @@ import pandas as pd
 import numpy as np
 from typing import Tuple, Dict, Any, List, Optional, Union
 
-from src.nlp.document_parser import DocumentParser
-from src.rag.chunking import CustomTextChunker
-
 REQUIRED_TRANSACTION_COLS = [
     'transaction_amount', 'transaction_frequency', 'merchant_category', 'location'
 ]
@@ -112,6 +109,9 @@ class InputHandler:
             return False, f"Unsupported file format '{ext}'. Only PDF and TXT files are supported.", []
 
         try:
+            from src.nlp.document_parser import DocumentParser
+            from src.rag.chunking import CustomTextChunker
+
             with tempfile.NamedTemporaryFile(delete=False, suffix=ext) as tmp_file:
                 tmp_file.write(file_bytes)
                 tmp_path = tmp_file.name

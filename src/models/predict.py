@@ -95,16 +95,44 @@ class RiskPredictor:
         """Predict risk & anomaly scores for a batch of transactions."""
         df_eng = FeatureEngineer.add_engineered_features(df_batch)
         X_proc = self.preprocessor.transform(df_eng)
-        ae_scores = compute_anomaly_scores(self.autoencoder, X_proc.values)
-        X_proc['ae_anomaly_score'] = ae_scores
+        raw_ae_errors = compute_anomaly_scores(self.autoencoder, X_proc.values)
+        
+        norm_scores = []
+        statuses = []
+        for raw_mse in raw_ae_errors:
+            score, status = normalize_anomaly_score(
+                float(raw_mse),
+                baseline_mean=self.ae_stats['mean'],
+                baseline_std=self.ae_stats['std']
+            )
+            norm_scores.append(score)
+            statuses.append(status)
+            
+        X_proc['ae_anomaly_score'] = raw_ae_errors
         X_final = X_proc[self.feature_names]
         
         if hasattr(self.model, "predict_proba"):
             probs = self.model.predict_proba(X_final)[:, 1]
+        elif hasattr(self.model, "decision_function"):
+            scores = self.model.decision_function(X_final)
+            probs = 1.0 / (1.0 + np.exp(-scores))
         else:
             probs = self.model.predict(X_final)
             
+        risk_scores = np.round(np.clip(probs, 0.0, 1.0), 2)
+        risk_levels = [self._determine_risk_level(s) for s in risk_scores]
+        
+        combined_scores = np.round(np.clip(0.65 * risk_scores + 0.35 * np.array(norm_scores), 0.0, 1.0), 2)
+        combined_levels = [self._determine_risk_level(s) for s in combined_scores]
+        requires_reviews = [(rl == "HIGH" or st == "HIGHLY ANOMALOUS" or cl == "HIGH") for rl, st, cl in zip(risk_levels, statuses, combined_levels)]
+        
         df_res = df_batch.copy()
-        df_res['risk_score'] = np.round(probs, 2)
-        df_res['risk_level'] = df_res['risk_score'].apply(self._determine_risk_level)
+        df_res['risk_score'] = risk_scores
+        df_res['risk_level'] = risk_levels
+        df_res['anomaly_score'] = norm_scores
+        df_res['anomaly_status'] = statuses
+        df_res['combined_risk_score'] = combined_scores
+        df_res['combined_risk_level'] = combined_levels
+        df_res['requires_human_review'] = requires_reviews
+        df_res['review_status'] = ["Requires Human Review" if r else "Standard Automated Clearance" for r in requires_reviews]
         return df_res
