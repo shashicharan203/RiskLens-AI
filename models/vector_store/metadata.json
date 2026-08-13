@@ -1118,5 +1118,495 @@
     "document_name": "uploaded_policy.txt",
     "page_number": 1,
     "chunk_index": 0
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c0",
+    "content": "LedgerMind AI - Synthetic Bank Risk & Compliance Policy IMPORTANT: This is synthetic demo policy content created for testing the LedgerMind AI project. It is not an actual bank policy. 1. Transactions with unusually high amounts should receive enhanced risk assessment. 2. Multiple failed login attempts are treated as an authentication risk signal. 3. Transactions from an unfamiliar device should receive additional verification. 4. High device-risk scores should increase transaction review priority. 5. International transactions may require additional verification depending on risk level. 6. International high-risk locations require enhanced due diligence. 7. High credit utilization should increase financial-risk assessment. 8. High debt-to-income ratios should increase customer financial-stress assessment. 9. Unusually frequent transactions within a short period should be reviewed for velocity risk. 10. Night-time transactions may require additional authentication when combined with other risk signals. 11. Customer financial exposure should be considered when evaluating elevated transaction risk. 12. Analysts should document the reason for approving or declining an escalated transaction. 13. Analysts should document the reason for approving or declining an escalated transaction. 14. Risk decisions should consider both predictive model output and supporting evidence. 15. Authentication anomalies should be considered together with transaction context rather than in isolation. 16.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 0
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c1",
+    "content": "an escalated transaction. 14. Risk decisions should consider both predictive model output and supporting evidence. 15. Authentication anomalies should be considered together with transaction context rather than in isolation. 16. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 17. Analysts should document the reason for approving or declining an escalated transaction. 18. Risk decisions should consider both predictive model output and supporting evidence. 19. Customer financial exposure should be considered when evaluating elevated transaction risk. 20. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 21. Risk decisions should consider both predictive model output and supporting evidence. 22. Analysts should document the reason for approving or declining an escalated transaction. 23. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 24. Risk analysts should review supporting transaction history before approving a high-risk case. 25. Risk analysts should review supporting transaction history before approving a high-risk case. 26. Risk decisions should consider both predictive model output and supporting evidence. 27. High-risk cases should be prioritized for human analyst review. 28. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 29. Cross-border activity with additional anomaly signals should receive enhanced scrutiny.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 1
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c2",
+    "content": "be prioritized for human analyst review. 28. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 29. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 30. High-risk cases should be prioritized for human analyst review. 31. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 32. Authentication anomalies should be considered together with transaction context rather than in isolation. 33. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 34. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 35. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 36. Risk analysts should review supporting transaction history before approving a high-risk case. 37. Authentication anomalies should be considered together with transaction context rather than in isolation. 38. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 39. Authentication anomalies should be considered together with transaction context rather than in isolation. 40. Customer financial exposure should be considered when evaluating elevated transaction risk. 41. Authentication anomalies should be considered together with transaction context rather than in isolation. 42. Evidence used for a risk decision should be traceable to the relevant policy or transaction",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 2
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c3",
+    "content": "41. Authentication anomalies should be considered together with transaction context rather than in isolation. 42. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 43. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 44. Risk analysts should review supporting transaction history before approving a high-risk case. 45. Risk analysts should review supporting transaction history before approving a high-risk case. 46. Risk analysts should review supporting transaction history before approving a high-risk case. 47. Risk analysts should review supporting transaction history before approving a high-risk case. 48. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 49. Risk analysts should review supporting transaction history before approving a high-risk case. 50. Authentication anomalies should be considered together with transaction context rather than in isolation. 51. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 52. Risk decisions should consider both predictive model output and supporting evidence. 53. A transaction should be escalated when multiple independent risk indicators occur together. 54. Analysts should document the reason for approving or declining an escalated transaction. 55. Risk decisions should consider both predictive model output and supporting",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 3
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c4",
+    "content": "multiple independent risk indicators occur together. 54. Analysts should document the reason for approving or declining an escalated transaction. 55. Risk decisions should consider both predictive model output and supporting evidence. 56. Risk decisions should consider both predictive model output and supporting evidence. 57. Authentication anomalies should be considered together with transaction context rather than in isolation. 58. Risk analysts should review supporting transaction history before approving a high-risk case. 59. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 60. Authentication anomalies should be considered together with transaction context rather than in isolation. 61. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 62. A transaction should be escalated when multiple independent risk indicators occur together. 63. Customer financial exposure should be considered when evaluating elevated transaction risk. 64. Analysts should document the reason for approving or declining an escalated transaction. 65. Customer financial exposure should be considered when evaluating elevated transaction risk. 66. Authentication anomalies should be considered together with transaction context rather than in isolation. 67. Risk analysts should review supporting transaction history before approving a high-risk case. 68. Analysts should document the reason for approving or declining an escalated transaction.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 4
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c5",
+    "content": "rather than in isolation. 67. Risk analysts should review supporting transaction history before approving a high-risk case. 68. Analysts should document the reason for approving or declining an escalated transaction. 69. Risk decisions should consider both predictive model output and supporting evidence. 70. High-risk cases should be prioritized for human analyst review. 71. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 72. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 73. High-risk cases should be prioritized for human analyst review. 74. Risk analysts should review supporting transaction history before approving a high-risk case. 75. Authentication anomalies should be considered together with transaction context rather than in isolation. 76. Risk decisions should consider both predictive model output and supporting evidence. 77. Authentication anomalies should be considered together with transaction context rather than in isolation. 78. Risk analysts should review supporting transaction history before approving a high-risk case. 79. Customer financial exposure should be considered when evaluating elevated transaction risk. 80. Analysts should document the reason for approving or declining an escalated transaction. 81. High-risk cases should be prioritized for human analyst review. 82. Unusual merchant-category activity should be reviewed against the",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 5
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c6",
+    "content": "should document the reason for approving or declining an escalated transaction. 81. High-risk cases should be prioritized for human analyst review. 82. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 83. Risk decisions should consider both predictive model output and supporting evidence. 84. Analysts should document the reason for approving or declining an escalated transaction. 85. Analysts should document the reason for approving or declining an escalated transaction. 86. Risk decisions should consider both predictive model output and supporting evidence. 87. A transaction should be escalated when multiple independent risk indicators occur together. 88. Analysts should document the reason for approving or declining an escalated transaction. 89. Customer financial exposure should be considered when evaluating elevated transaction risk. 90. A transaction should be escalated when multiple independent risk indicators occur together. 91. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 92. Customer financial exposure should be considered when evaluating elevated transaction risk. 93. Customer financial exposure should be considered when evaluating elevated transaction risk. 94. Authentication anomalies should be considered together with transaction context rather than in isolation. 95. Authentication anomalies should be considered together with transaction context",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 6
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c7",
+    "content": "considered when evaluating elevated transaction risk. 94. Authentication anomalies should be considered together with transaction context rather than in isolation. 95. Authentication anomalies should be considered together with transaction context rather than in isolation. 96. A transaction should be escalated when multiple independent risk indicators occur together. 97. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 98. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 99. Analysts should document the reason for approving or declining an escalated transaction. 100. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 7
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c0",
+    "content": "LedgerMind AI - Synthetic Bank Risk & Compliance Policy IMPORTANT: This is synthetic demo policy content created for testing the LedgerMind AI project. It is not an actual bank policy. 1. Transactions with unusually high amounts should receive enhanced risk assessment. 2. Multiple failed login attempts are treated as an authentication risk signal. 3. Transactions from an unfamiliar device should receive additional verification. 4. High device-risk scores should increase transaction review priority. 5. International transactions may require additional verification depending on risk level. 6. International high-risk locations require enhanced due diligence. 7. High credit utilization should increase financial-risk assessment. 8. High debt-to-income ratios should increase customer financial-stress assessment. 9. Unusually frequent transactions within a short period should be reviewed for velocity risk. 10. Night-time transactions may require additional authentication when combined with other risk signals. 11. Customer financial exposure should be considered when evaluating elevated transaction risk. 12. Analysts should document the reason for approving or declining an escalated transaction. 13. Analysts should document the reason for approving or declining an escalated transaction. 14. Risk decisions should consider both predictive model output and supporting evidence. 15. Authentication anomalies should be considered together with transaction context rather than in isolation. 16.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 0
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c1",
+    "content": "an escalated transaction. 14. Risk decisions should consider both predictive model output and supporting evidence. 15. Authentication anomalies should be considered together with transaction context rather than in isolation. 16. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 17. Analysts should document the reason for approving or declining an escalated transaction. 18. Risk decisions should consider both predictive model output and supporting evidence. 19. Customer financial exposure should be considered when evaluating elevated transaction risk. 20. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 21. Risk decisions should consider both predictive model output and supporting evidence. 22. Analysts should document the reason for approving or declining an escalated transaction. 23. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 24. Risk analysts should review supporting transaction history before approving a high-risk case. 25. Risk analysts should review supporting transaction history before approving a high-risk case. 26. Risk decisions should consider both predictive model output and supporting evidence. 27. High-risk cases should be prioritized for human analyst review. 28. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 29. Cross-border activity with additional anomaly signals should receive enhanced scrutiny.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 1
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c2",
+    "content": "be prioritized for human analyst review. 28. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 29. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 30. High-risk cases should be prioritized for human analyst review. 31. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 32. Authentication anomalies should be considered together with transaction context rather than in isolation. 33. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 34. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 35. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 36. Risk analysts should review supporting transaction history before approving a high-risk case. 37. Authentication anomalies should be considered together with transaction context rather than in isolation. 38. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 39. Authentication anomalies should be considered together with transaction context rather than in isolation. 40. Customer financial exposure should be considered when evaluating elevated transaction risk. 41. Authentication anomalies should be considered together with transaction context rather than in isolation. 42. Evidence used for a risk decision should be traceable to the relevant policy or transaction",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 2
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c3",
+    "content": "41. Authentication anomalies should be considered together with transaction context rather than in isolation. 42. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 43. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 44. Risk analysts should review supporting transaction history before approving a high-risk case. 45. Risk analysts should review supporting transaction history before approving a high-risk case. 46. Risk analysts should review supporting transaction history before approving a high-risk case. 47. Risk analysts should review supporting transaction history before approving a high-risk case. 48. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 49. Risk analysts should review supporting transaction history before approving a high-risk case. 50. Authentication anomalies should be considered together with transaction context rather than in isolation. 51. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 52. Risk decisions should consider both predictive model output and supporting evidence. 53. A transaction should be escalated when multiple independent risk indicators occur together. 54. Analysts should document the reason for approving or declining an escalated transaction. 55. Risk decisions should consider both predictive model output and supporting",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 3
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c4",
+    "content": "multiple independent risk indicators occur together. 54. Analysts should document the reason for approving or declining an escalated transaction. 55. Risk decisions should consider both predictive model output and supporting evidence. 56. Risk decisions should consider both predictive model output and supporting evidence. 57. Authentication anomalies should be considered together with transaction context rather than in isolation. 58. Risk analysts should review supporting transaction history before approving a high-risk case. 59. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 60. Authentication anomalies should be considered together with transaction context rather than in isolation. 61. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 62. A transaction should be escalated when multiple independent risk indicators occur together. 63. Customer financial exposure should be considered when evaluating elevated transaction risk. 64. Analysts should document the reason for approving or declining an escalated transaction. 65. Customer financial exposure should be considered when evaluating elevated transaction risk. 66. Authentication anomalies should be considered together with transaction context rather than in isolation. 67. Risk analysts should review supporting transaction history before approving a high-risk case. 68. Analysts should document the reason for approving or declining an escalated transaction.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 4
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c5",
+    "content": "rather than in isolation. 67. Risk analysts should review supporting transaction history before approving a high-risk case. 68. Analysts should document the reason for approving or declining an escalated transaction. 69. Risk decisions should consider both predictive model output and supporting evidence. 70. High-risk cases should be prioritized for human analyst review. 71. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 72. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 73. High-risk cases should be prioritized for human analyst review. 74. Risk analysts should review supporting transaction history before approving a high-risk case. 75. Authentication anomalies should be considered together with transaction context rather than in isolation. 76. Risk decisions should consider both predictive model output and supporting evidence. 77. Authentication anomalies should be considered together with transaction context rather than in isolation. 78. Risk analysts should review supporting transaction history before approving a high-risk case. 79. Customer financial exposure should be considered when evaluating elevated transaction risk. 80. Analysts should document the reason for approving or declining an escalated transaction. 81. High-risk cases should be prioritized for human analyst review. 82. Unusual merchant-category activity should be reviewed against the",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 5
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c6",
+    "content": "should document the reason for approving or declining an escalated transaction. 81. High-risk cases should be prioritized for human analyst review. 82. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 83. Risk decisions should consider both predictive model output and supporting evidence. 84. Analysts should document the reason for approving or declining an escalated transaction. 85. Analysts should document the reason for approving or declining an escalated transaction. 86. Risk decisions should consider both predictive model output and supporting evidence. 87. A transaction should be escalated when multiple independent risk indicators occur together. 88. Analysts should document the reason for approving or declining an escalated transaction. 89. Customer financial exposure should be considered when evaluating elevated transaction risk. 90. A transaction should be escalated when multiple independent risk indicators occur together. 91. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 92. Customer financial exposure should be considered when evaluating elevated transaction risk. 93. Customer financial exposure should be considered when evaluating elevated transaction risk. 94. Authentication anomalies should be considered together with transaction context rather than in isolation. 95. Authentication anomalies should be considered together with transaction context",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 6
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c7",
+    "content": "considered when evaluating elevated transaction risk. 94. Authentication anomalies should be considered together with transaction context rather than in isolation. 95. Authentication anomalies should be considered together with transaction context rather than in isolation. 96. A transaction should be escalated when multiple independent risk indicators occur together. 97. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 98. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 99. Analysts should document the reason for approving or declining an escalated transaction. 100. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 7
+  },
+  {
+    "chunk_id": "uploaded_policy.txt_p1_c0",
+    "content": "LedgerMind Financial Risk Report: High risk accounts exhibit debt-to-income over 0.50.",
+    "document_name": "uploaded_policy.txt",
+    "page_number": 1,
+    "chunk_index": 0
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c0",
+    "content": "LedgerMind AI - Synthetic Bank Risk & Compliance Policy IMPORTANT: This is synthetic demo policy content created for testing the LedgerMind AI project. It is not an actual bank policy. 1. Transactions with unusually high amounts should receive enhanced risk assessment. 2. Multiple failed login attempts are treated as an authentication risk signal. 3. Transactions from an unfamiliar device should receive additional verification. 4. High device-risk scores should increase transaction review priority. 5. International transactions may require additional verification depending on risk level. 6. International high-risk locations require enhanced due diligence. 7. High credit utilization should increase financial-risk assessment. 8. High debt-to-income ratios should increase customer financial-stress assessment. 9. Unusually frequent transactions within a short period should be reviewed for velocity risk. 10. Night-time transactions may require additional authentication when combined with other risk signals. 11. Customer financial exposure should be considered when evaluating elevated transaction risk. 12. Analysts should document the reason for approving or declining an escalated transaction. 13. Analysts should document the reason for approving or declining an escalated transaction. 14. Risk decisions should consider both predictive model output and supporting evidence. 15. Authentication anomalies should be considered together with transaction context rather than in isolation. 16.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 0
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c1",
+    "content": "an escalated transaction. 14. Risk decisions should consider both predictive model output and supporting evidence. 15. Authentication anomalies should be considered together with transaction context rather than in isolation. 16. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 17. Analysts should document the reason for approving or declining an escalated transaction. 18. Risk decisions should consider both predictive model output and supporting evidence. 19. Customer financial exposure should be considered when evaluating elevated transaction risk. 20. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 21. Risk decisions should consider both predictive model output and supporting evidence. 22. Analysts should document the reason for approving or declining an escalated transaction. 23. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 24. Risk analysts should review supporting transaction history before approving a high-risk case. 25. Risk analysts should review supporting transaction history before approving a high-risk case. 26. Risk decisions should consider both predictive model output and supporting evidence. 27. High-risk cases should be prioritized for human analyst review. 28. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 29. Cross-border activity with additional anomaly signals should receive enhanced scrutiny.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 1
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c2",
+    "content": "be prioritized for human analyst review. 28. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 29. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 30. High-risk cases should be prioritized for human analyst review. 31. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 32. Authentication anomalies should be considered together with transaction context rather than in isolation. 33. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 34. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 35. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 36. Risk analysts should review supporting transaction history before approving a high-risk case. 37. Authentication anomalies should be considered together with transaction context rather than in isolation. 38. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 39. Authentication anomalies should be considered together with transaction context rather than in isolation. 40. Customer financial exposure should be considered when evaluating elevated transaction risk. 41. Authentication anomalies should be considered together with transaction context rather than in isolation. 42. Evidence used for a risk decision should be traceable to the relevant policy or transaction",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 2
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c3",
+    "content": "41. Authentication anomalies should be considered together with transaction context rather than in isolation. 42. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 43. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 44. Risk analysts should review supporting transaction history before approving a high-risk case. 45. Risk analysts should review supporting transaction history before approving a high-risk case. 46. Risk analysts should review supporting transaction history before approving a high-risk case. 47. Risk analysts should review supporting transaction history before approving a high-risk case. 48. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 49. Risk analysts should review supporting transaction history before approving a high-risk case. 50. Authentication anomalies should be considered together with transaction context rather than in isolation. 51. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 52. Risk decisions should consider both predictive model output and supporting evidence. 53. A transaction should be escalated when multiple independent risk indicators occur together. 54. Analysts should document the reason for approving or declining an escalated transaction. 55. Risk decisions should consider both predictive model output and supporting",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 3
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c4",
+    "content": "multiple independent risk indicators occur together. 54. Analysts should document the reason for approving or declining an escalated transaction. 55. Risk decisions should consider both predictive model output and supporting evidence. 56. Risk decisions should consider both predictive model output and supporting evidence. 57. Authentication anomalies should be considered together with transaction context rather than in isolation. 58. Risk analysts should review supporting transaction history before approving a high-risk case. 59. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 60. Authentication anomalies should be considered together with transaction context rather than in isolation. 61. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 62. A transaction should be escalated when multiple independent risk indicators occur together. 63. Customer financial exposure should be considered when evaluating elevated transaction risk. 64. Analysts should document the reason for approving or declining an escalated transaction. 65. Customer financial exposure should be considered when evaluating elevated transaction risk. 66. Authentication anomalies should be considered together with transaction context rather than in isolation. 67. Risk analysts should review supporting transaction history before approving a high-risk case. 68. Analysts should document the reason for approving or declining an escalated transaction.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 4
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c5",
+    "content": "rather than in isolation. 67. Risk analysts should review supporting transaction history before approving a high-risk case. 68. Analysts should document the reason for approving or declining an escalated transaction. 69. Risk decisions should consider both predictive model output and supporting evidence. 70. High-risk cases should be prioritized for human analyst review. 71. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 72. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 73. High-risk cases should be prioritized for human analyst review. 74. Risk analysts should review supporting transaction history before approving a high-risk case. 75. Authentication anomalies should be considered together with transaction context rather than in isolation. 76. Risk decisions should consider both predictive model output and supporting evidence. 77. Authentication anomalies should be considered together with transaction context rather than in isolation. 78. Risk analysts should review supporting transaction history before approving a high-risk case. 79. Customer financial exposure should be considered when evaluating elevated transaction risk. 80. Analysts should document the reason for approving or declining an escalated transaction. 81. High-risk cases should be prioritized for human analyst review. 82. Unusual merchant-category activity should be reviewed against the",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 5
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c6",
+    "content": "should document the reason for approving or declining an escalated transaction. 81. High-risk cases should be prioritized for human analyst review. 82. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 83. Risk decisions should consider both predictive model output and supporting evidence. 84. Analysts should document the reason for approving or declining an escalated transaction. 85. Analysts should document the reason for approving or declining an escalated transaction. 86. Risk decisions should consider both predictive model output and supporting evidence. 87. A transaction should be escalated when multiple independent risk indicators occur together. 88. Analysts should document the reason for approving or declining an escalated transaction. 89. Customer financial exposure should be considered when evaluating elevated transaction risk. 90. A transaction should be escalated when multiple independent risk indicators occur together. 91. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 92. Customer financial exposure should be considered when evaluating elevated transaction risk. 93. Customer financial exposure should be considered when evaluating elevated transaction risk. 94. Authentication anomalies should be considered together with transaction context rather than in isolation. 95. Authentication anomalies should be considered together with transaction context",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 6
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c7",
+    "content": "considered when evaluating elevated transaction risk. 94. Authentication anomalies should be considered together with transaction context rather than in isolation. 95. Authentication anomalies should be considered together with transaction context rather than in isolation. 96. A transaction should be escalated when multiple independent risk indicators occur together. 97. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 98. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 99. Analysts should document the reason for approving or declining an escalated transaction. 100. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 7
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c0",
+    "content": "LedgerMind AI - Synthetic Bank Risk & Compliance Policy IMPORTANT: This is synthetic demo policy content created for testing the LedgerMind AI project. It is not an actual bank policy. 1. Transactions with unusually high amounts should receive enhanced risk assessment. 2. Multiple failed login attempts are treated as an authentication risk signal. 3. Transactions from an unfamiliar device should receive additional verification. 4. High device-risk scores should increase transaction review priority. 5. International transactions may require additional verification depending on risk level. 6. International high-risk locations require enhanced due diligence. 7. High credit utilization should increase financial-risk assessment. 8. High debt-to-income ratios should increase customer financial-stress assessment. 9. Unusually frequent transactions within a short period should be reviewed for velocity risk. 10. Night-time transactions may require additional authentication when combined with other risk signals. 11. Customer financial exposure should be considered when evaluating elevated transaction risk. 12. Analysts should document the reason for approving or declining an escalated transaction. 13. Analysts should document the reason for approving or declining an escalated transaction. 14. Risk decisions should consider both predictive model output and supporting evidence. 15. Authentication anomalies should be considered together with transaction context rather than in isolation. 16.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 0
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c1",
+    "content": "an escalated transaction. 14. Risk decisions should consider both predictive model output and supporting evidence. 15. Authentication anomalies should be considered together with transaction context rather than in isolation. 16. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 17. Analysts should document the reason for approving or declining an escalated transaction. 18. Risk decisions should consider both predictive model output and supporting evidence. 19. Customer financial exposure should be considered when evaluating elevated transaction risk. 20. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 21. Risk decisions should consider both predictive model output and supporting evidence. 22. Analysts should document the reason for approving or declining an escalated transaction. 23. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 24. Risk analysts should review supporting transaction history before approving a high-risk case. 25. Risk analysts should review supporting transaction history before approving a high-risk case. 26. Risk decisions should consider both predictive model output and supporting evidence. 27. High-risk cases should be prioritized for human analyst review. 28. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 29. Cross-border activity with additional anomaly signals should receive enhanced scrutiny.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 1
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c2",
+    "content": "be prioritized for human analyst review. 28. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 29. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 30. High-risk cases should be prioritized for human analyst review. 31. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 32. Authentication anomalies should be considered together with transaction context rather than in isolation. 33. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 34. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 35. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 36. Risk analysts should review supporting transaction history before approving a high-risk case. 37. Authentication anomalies should be considered together with transaction context rather than in isolation. 38. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 39. Authentication anomalies should be considered together with transaction context rather than in isolation. 40. Customer financial exposure should be considered when evaluating elevated transaction risk. 41. Authentication anomalies should be considered together with transaction context rather than in isolation. 42. Evidence used for a risk decision should be traceable to the relevant policy or transaction",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 2
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c3",
+    "content": "41. Authentication anomalies should be considered together with transaction context rather than in isolation. 42. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 43. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 44. Risk analysts should review supporting transaction history before approving a high-risk case. 45. Risk analysts should review supporting transaction history before approving a high-risk case. 46. Risk analysts should review supporting transaction history before approving a high-risk case. 47. Risk analysts should review supporting transaction history before approving a high-risk case. 48. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 49. Risk analysts should review supporting transaction history before approving a high-risk case. 50. Authentication anomalies should be considered together with transaction context rather than in isolation. 51. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 52. Risk decisions should consider both predictive model output and supporting evidence. 53. A transaction should be escalated when multiple independent risk indicators occur together. 54. Analysts should document the reason for approving or declining an escalated transaction. 55. Risk decisions should consider both predictive model output and supporting",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 3
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c4",
+    "content": "multiple independent risk indicators occur together. 54. Analysts should document the reason for approving or declining an escalated transaction. 55. Risk decisions should consider both predictive model output and supporting evidence. 56. Risk decisions should consider both predictive model output and supporting evidence. 57. Authentication anomalies should be considered together with transaction context rather than in isolation. 58. Risk analysts should review supporting transaction history before approving a high-risk case. 59. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 60. Authentication anomalies should be considered together with transaction context rather than in isolation. 61. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 62. A transaction should be escalated when multiple independent risk indicators occur together. 63. Customer financial exposure should be considered when evaluating elevated transaction risk. 64. Analysts should document the reason for approving or declining an escalated transaction. 65. Customer financial exposure should be considered when evaluating elevated transaction risk. 66. Authentication anomalies should be considered together with transaction context rather than in isolation. 67. Risk analysts should review supporting transaction history before approving a high-risk case. 68. Analysts should document the reason for approving or declining an escalated transaction.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 4
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c5",
+    "content": "rather than in isolation. 67. Risk analysts should review supporting transaction history before approving a high-risk case. 68. Analysts should document the reason for approving or declining an escalated transaction. 69. Risk decisions should consider both predictive model output and supporting evidence. 70. High-risk cases should be prioritized for human analyst review. 71. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 72. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 73. High-risk cases should be prioritized for human analyst review. 74. Risk analysts should review supporting transaction history before approving a high-risk case. 75. Authentication anomalies should be considered together with transaction context rather than in isolation. 76. Risk decisions should consider both predictive model output and supporting evidence. 77. Authentication anomalies should be considered together with transaction context rather than in isolation. 78. Risk analysts should review supporting transaction history before approving a high-risk case. 79. Customer financial exposure should be considered when evaluating elevated transaction risk. 80. Analysts should document the reason for approving or declining an escalated transaction. 81. High-risk cases should be prioritized for human analyst review. 82. Unusual merchant-category activity should be reviewed against the",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 5
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c6",
+    "content": "should document the reason for approving or declining an escalated transaction. 81. High-risk cases should be prioritized for human analyst review. 82. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 83. Risk decisions should consider both predictive model output and supporting evidence. 84. Analysts should document the reason for approving or declining an escalated transaction. 85. Analysts should document the reason for approving or declining an escalated transaction. 86. Risk decisions should consider both predictive model output and supporting evidence. 87. A transaction should be escalated when multiple independent risk indicators occur together. 88. Analysts should document the reason for approving or declining an escalated transaction. 89. Customer financial exposure should be considered when evaluating elevated transaction risk. 90. A transaction should be escalated when multiple independent risk indicators occur together. 91. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 92. Customer financial exposure should be considered when evaluating elevated transaction risk. 93. Customer financial exposure should be considered when evaluating elevated transaction risk. 94. Authentication anomalies should be considered together with transaction context rather than in isolation. 95. Authentication anomalies should be considered together with transaction context",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 6
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c7",
+    "content": "considered when evaluating elevated transaction risk. 94. Authentication anomalies should be considered together with transaction context rather than in isolation. 95. Authentication anomalies should be considered together with transaction context rather than in isolation. 96. A transaction should be escalated when multiple independent risk indicators occur together. 97. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 98. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 99. Analysts should document the reason for approving or declining an escalated transaction. 100. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 7
+  },
+  {
+    "chunk_id": "uploaded_policy.txt_p1_c0",
+    "content": "LedgerMind Financial Risk Report: High risk accounts exhibit debt-to-income over 0.50.",
+    "document_name": "uploaded_policy.txt",
+    "page_number": 1,
+    "chunk_index": 0
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c0",
+    "content": "LedgerMind AI - Synthetic Bank Risk & Compliance Policy IMPORTANT: This is synthetic demo policy content created for testing the LedgerMind AI project. It is not an actual bank policy. 1. Transactions with unusually high amounts should receive enhanced risk assessment. 2. Multiple failed login attempts are treated as an authentication risk signal. 3. Transactions from an unfamiliar device should receive additional verification. 4. High device-risk scores should increase transaction review priority. 5. International transactions may require additional verification depending on risk level. 6. International high-risk locations require enhanced due diligence. 7. High credit utilization should increase financial-risk assessment. 8. High debt-to-income ratios should increase customer financial-stress assessment. 9. Unusually frequent transactions within a short period should be reviewed for velocity risk. 10. Night-time transactions may require additional authentication when combined with other risk signals. 11. Customer financial exposure should be considered when evaluating elevated transaction risk. 12. Analysts should document the reason for approving or declining an escalated transaction. 13. Analysts should document the reason for approving or declining an escalated transaction. 14. Risk decisions should consider both predictive model output and supporting evidence. 15. Authentication anomalies should be considered together with transaction context rather than in isolation. 16.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 0
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c1",
+    "content": "an escalated transaction. 14. Risk decisions should consider both predictive model output and supporting evidence. 15. Authentication anomalies should be considered together with transaction context rather than in isolation. 16. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 17. Analysts should document the reason for approving or declining an escalated transaction. 18. Risk decisions should consider both predictive model output and supporting evidence. 19. Customer financial exposure should be considered when evaluating elevated transaction risk. 20. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 21. Risk decisions should consider both predictive model output and supporting evidence. 22. Analysts should document the reason for approving or declining an escalated transaction. 23. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 24. Risk analysts should review supporting transaction history before approving a high-risk case. 25. Risk analysts should review supporting transaction history before approving a high-risk case. 26. Risk decisions should consider both predictive model output and supporting evidence. 27. High-risk cases should be prioritized for human analyst review. 28. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 29. Cross-border activity with additional anomaly signals should receive enhanced scrutiny.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 1
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c2",
+    "content": "be prioritized for human analyst review. 28. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 29. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 30. High-risk cases should be prioritized for human analyst review. 31. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 32. Authentication anomalies should be considered together with transaction context rather than in isolation. 33. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 34. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 35. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 36. Risk analysts should review supporting transaction history before approving a high-risk case. 37. Authentication anomalies should be considered together with transaction context rather than in isolation. 38. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 39. Authentication anomalies should be considered together with transaction context rather than in isolation. 40. Customer financial exposure should be considered when evaluating elevated transaction risk. 41. Authentication anomalies should be considered together with transaction context rather than in isolation. 42. Evidence used for a risk decision should be traceable to the relevant policy or transaction",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 2
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c3",
+    "content": "41. Authentication anomalies should be considered together with transaction context rather than in isolation. 42. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 43. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 44. Risk analysts should review supporting transaction history before approving a high-risk case. 45. Risk analysts should review supporting transaction history before approving a high-risk case. 46. Risk analysts should review supporting transaction history before approving a high-risk case. 47. Risk analysts should review supporting transaction history before approving a high-risk case. 48. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 49. Risk analysts should review supporting transaction history before approving a high-risk case. 50. Authentication anomalies should be considered together with transaction context rather than in isolation. 51. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 52. Risk decisions should consider both predictive model output and supporting evidence. 53. A transaction should be escalated when multiple independent risk indicators occur together. 54. Analysts should document the reason for approving or declining an escalated transaction. 55. Risk decisions should consider both predictive model output and supporting",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 3
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c4",
+    "content": "multiple independent risk indicators occur together. 54. Analysts should document the reason for approving or declining an escalated transaction. 55. Risk decisions should consider both predictive model output and supporting evidence. 56. Risk decisions should consider both predictive model output and supporting evidence. 57. Authentication anomalies should be considered together with transaction context rather than in isolation. 58. Risk analysts should review supporting transaction history before approving a high-risk case. 59. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 60. Authentication anomalies should be considered together with transaction context rather than in isolation. 61. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 62. A transaction should be escalated when multiple independent risk indicators occur together. 63. Customer financial exposure should be considered when evaluating elevated transaction risk. 64. Analysts should document the reason for approving or declining an escalated transaction. 65. Customer financial exposure should be considered when evaluating elevated transaction risk. 66. Authentication anomalies should be considered together with transaction context rather than in isolation. 67. Risk analysts should review supporting transaction history before approving a high-risk case. 68. Analysts should document the reason for approving or declining an escalated transaction.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 4
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c5",
+    "content": "rather than in isolation. 67. Risk analysts should review supporting transaction history before approving a high-risk case. 68. Analysts should document the reason for approving or declining an escalated transaction. 69. Risk decisions should consider both predictive model output and supporting evidence. 70. High-risk cases should be prioritized for human analyst review. 71. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 72. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 73. High-risk cases should be prioritized for human analyst review. 74. Risk analysts should review supporting transaction history before approving a high-risk case. 75. Authentication anomalies should be considered together with transaction context rather than in isolation. 76. Risk decisions should consider both predictive model output and supporting evidence. 77. Authentication anomalies should be considered together with transaction context rather than in isolation. 78. Risk analysts should review supporting transaction history before approving a high-risk case. 79. Customer financial exposure should be considered when evaluating elevated transaction risk. 80. Analysts should document the reason for approving or declining an escalated transaction. 81. High-risk cases should be prioritized for human analyst review. 82. Unusual merchant-category activity should be reviewed against the",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 5
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c6",
+    "content": "should document the reason for approving or declining an escalated transaction. 81. High-risk cases should be prioritized for human analyst review. 82. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 83. Risk decisions should consider both predictive model output and supporting evidence. 84. Analysts should document the reason for approving or declining an escalated transaction. 85. Analysts should document the reason for approving or declining an escalated transaction. 86. Risk decisions should consider both predictive model output and supporting evidence. 87. A transaction should be escalated when multiple independent risk indicators occur together. 88. Analysts should document the reason for approving or declining an escalated transaction. 89. Customer financial exposure should be considered when evaluating elevated transaction risk. 90. A transaction should be escalated when multiple independent risk indicators occur together. 91. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 92. Customer financial exposure should be considered when evaluating elevated transaction risk. 93. Customer financial exposure should be considered when evaluating elevated transaction risk. 94. Authentication anomalies should be considered together with transaction context rather than in isolation. 95. Authentication anomalies should be considered together with transaction context",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 6
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c7",
+    "content": "considered when evaluating elevated transaction risk. 94. Authentication anomalies should be considered together with transaction context rather than in isolation. 95. Authentication anomalies should be considered together with transaction context rather than in isolation. 96. A transaction should be escalated when multiple independent risk indicators occur together. 97. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 98. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 99. Analysts should document the reason for approving or declining an escalated transaction. 100. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 7
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c0",
+    "content": "LedgerMind AI - Synthetic Bank Risk & Compliance Policy IMPORTANT: This is synthetic demo policy content created for testing the LedgerMind AI project. It is not an actual bank policy. 1. Transactions with unusually high amounts should receive enhanced risk assessment. 2. Multiple failed login attempts are treated as an authentication risk signal. 3. Transactions from an unfamiliar device should receive additional verification. 4. High device-risk scores should increase transaction review priority. 5. International transactions may require additional verification depending on risk level. 6. International high-risk locations require enhanced due diligence. 7. High credit utilization should increase financial-risk assessment. 8. High debt-to-income ratios should increase customer financial-stress assessment. 9. Unusually frequent transactions within a short period should be reviewed for velocity risk. 10. Night-time transactions may require additional authentication when combined with other risk signals. 11. Customer financial exposure should be considered when evaluating elevated transaction risk. 12. Analysts should document the reason for approving or declining an escalated transaction. 13. Analysts should document the reason for approving or declining an escalated transaction. 14. Risk decisions should consider both predictive model output and supporting evidence. 15. Authentication anomalies should be considered together with transaction context rather than in isolation. 16.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 0
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c1",
+    "content": "an escalated transaction. 14. Risk decisions should consider both predictive model output and supporting evidence. 15. Authentication anomalies should be considered together with transaction context rather than in isolation. 16. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 17. Analysts should document the reason for approving or declining an escalated transaction. 18. Risk decisions should consider both predictive model output and supporting evidence. 19. Customer financial exposure should be considered when evaluating elevated transaction risk. 20. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 21. Risk decisions should consider both predictive model output and supporting evidence. 22. Analysts should document the reason for approving or declining an escalated transaction. 23. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 24. Risk analysts should review supporting transaction history before approving a high-risk case. 25. Risk analysts should review supporting transaction history before approving a high-risk case. 26. Risk decisions should consider both predictive model output and supporting evidence. 27. High-risk cases should be prioritized for human analyst review. 28. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 29. Cross-border activity with additional anomaly signals should receive enhanced scrutiny.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 1
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c2",
+    "content": "be prioritized for human analyst review. 28. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 29. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 30. High-risk cases should be prioritized for human analyst review. 31. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 32. Authentication anomalies should be considered together with transaction context rather than in isolation. 33. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 34. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 35. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 36. Risk analysts should review supporting transaction history before approving a high-risk case. 37. Authentication anomalies should be considered together with transaction context rather than in isolation. 38. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 39. Authentication anomalies should be considered together with transaction context rather than in isolation. 40. Customer financial exposure should be considered when evaluating elevated transaction risk. 41. Authentication anomalies should be considered together with transaction context rather than in isolation. 42. Evidence used for a risk decision should be traceable to the relevant policy or transaction",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 2
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c3",
+    "content": "41. Authentication anomalies should be considered together with transaction context rather than in isolation. 42. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 43. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 44. Risk analysts should review supporting transaction history before approving a high-risk case. 45. Risk analysts should review supporting transaction history before approving a high-risk case. 46. Risk analysts should review supporting transaction history before approving a high-risk case. 47. Risk analysts should review supporting transaction history before approving a high-risk case. 48. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 49. Risk analysts should review supporting transaction history before approving a high-risk case. 50. Authentication anomalies should be considered together with transaction context rather than in isolation. 51. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 52. Risk decisions should consider both predictive model output and supporting evidence. 53. A transaction should be escalated when multiple independent risk indicators occur together. 54. Analysts should document the reason for approving or declining an escalated transaction. 55. Risk decisions should consider both predictive model output and supporting",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 3
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c4",
+    "content": "multiple independent risk indicators occur together. 54. Analysts should document the reason for approving or declining an escalated transaction. 55. Risk decisions should consider both predictive model output and supporting evidence. 56. Risk decisions should consider both predictive model output and supporting evidence. 57. Authentication anomalies should be considered together with transaction context rather than in isolation. 58. Risk analysts should review supporting transaction history before approving a high-risk case. 59. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 60. Authentication anomalies should be considered together with transaction context rather than in isolation. 61. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 62. A transaction should be escalated when multiple independent risk indicators occur together. 63. Customer financial exposure should be considered when evaluating elevated transaction risk. 64. Analysts should document the reason for approving or declining an escalated transaction. 65. Customer financial exposure should be considered when evaluating elevated transaction risk. 66. Authentication anomalies should be considered together with transaction context rather than in isolation. 67. Risk analysts should review supporting transaction history before approving a high-risk case. 68. Analysts should document the reason for approving or declining an escalated transaction.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 4
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c5",
+    "content": "rather than in isolation. 67. Risk analysts should review supporting transaction history before approving a high-risk case. 68. Analysts should document the reason for approving or declining an escalated transaction. 69. Risk decisions should consider both predictive model output and supporting evidence. 70. High-risk cases should be prioritized for human analyst review. 71. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 72. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 73. High-risk cases should be prioritized for human analyst review. 74. Risk analysts should review supporting transaction history before approving a high-risk case. 75. Authentication anomalies should be considered together with transaction context rather than in isolation. 76. Risk decisions should consider both predictive model output and supporting evidence. 77. Authentication anomalies should be considered together with transaction context rather than in isolation. 78. Risk analysts should review supporting transaction history before approving a high-risk case. 79. Customer financial exposure should be considered when evaluating elevated transaction risk. 80. Analysts should document the reason for approving or declining an escalated transaction. 81. High-risk cases should be prioritized for human analyst review. 82. Unusual merchant-category activity should be reviewed against the",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 5
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c6",
+    "content": "should document the reason for approving or declining an escalated transaction. 81. High-risk cases should be prioritized for human analyst review. 82. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 83. Risk decisions should consider both predictive model output and supporting evidence. 84. Analysts should document the reason for approving or declining an escalated transaction. 85. Analysts should document the reason for approving or declining an escalated transaction. 86. Risk decisions should consider both predictive model output and supporting evidence. 87. A transaction should be escalated when multiple independent risk indicators occur together. 88. Analysts should document the reason for approving or declining an escalated transaction. 89. Customer financial exposure should be considered when evaluating elevated transaction risk. 90. A transaction should be escalated when multiple independent risk indicators occur together. 91. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 92. Customer financial exposure should be considered when evaluating elevated transaction risk. 93. Customer financial exposure should be considered when evaluating elevated transaction risk. 94. Authentication anomalies should be considered together with transaction context rather than in isolation. 95. Authentication anomalies should be considered together with transaction context",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 6
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c7",
+    "content": "considered when evaluating elevated transaction risk. 94. Authentication anomalies should be considered together with transaction context rather than in isolation. 95. Authentication anomalies should be considered together with transaction context rather than in isolation. 96. A transaction should be escalated when multiple independent risk indicators occur together. 97. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 98. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 99. Analysts should document the reason for approving or declining an escalated transaction. 100. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 7
+  },
+  {
+    "chunk_id": "Bank_Risk_Policy.txt_p1_c0",
+    "content": "Bank Risk Policy: Section: Authentication Risk Multiple failed login attempts violate authentication thresholds. Section: Device Risk High device risk scores require enhanced authentication and manual review. Section: Exposure High credit utilization over 0.80 requires risk review.",
+    "document_name": "Bank_Risk_Policy.txt",
+    "page_number": 1,
+    "chunk_index": 0
+  },
+  {
+    "chunk_id": "uploaded_policy.txt_p1_c0",
+    "content": "LedgerMind Financial Risk Report: High risk accounts exhibit debt-to-income over 0.50.",
+    "document_name": "uploaded_policy.txt",
+    "page_number": 1,
+    "chunk_index": 0
+  },
+  {
+    "chunk_id": "Bank_Risk_Policy.txt_p1_c0",
+    "content": "Bank Risk Policy: Section: Authentication Risk Multiple failed login attempts violate authentication thresholds. Section: Device Risk High device risk scores require enhanced authentication and manual review.",
+    "document_name": "Bank_Risk_Policy.txt",
+    "page_number": 1,
+    "chunk_index": 0
+  },
+  {
+    "chunk_id": "uploaded_policy.txt_p1_c0",
+    "content": "LedgerMind Financial Risk Report: High risk accounts exhibit debt-to-income over 0.50.",
+    "document_name": "uploaded_policy.txt",
+    "page_number": 1,
+    "chunk_index": 0
+  },
+  {
+    "chunk_id": "Bank_Risk_Policy.txt_p1_c0",
+    "content": "Bank Risk Policy: Section: Authentication Risk Multiple failed login attempts violate authentication thresholds. Section: Device Risk High device risk scores require enhanced authentication and manual review.",
+    "document_name": "Bank_Risk_Policy.txt",
+    "page_number": 1,
+    "chunk_index": 0
+  },
+  {
+    "chunk_id": "uploaded_policy.txt_p1_c0",
+    "content": "LedgerMind Financial Risk Report: High risk accounts exhibit debt-to-income over 0.50.",
+    "document_name": "uploaded_policy.txt",
+    "page_number": 1,
+    "chunk_index": 0
+  },
+  {
+    "chunk_id": "Bank_Risk_Policy.txt_p1_c0",
+    "content": "Bank Risk Policy: Section: Authentication Risk Multiple failed login attempts violate authentication thresholds. Section: Device Risk High device risk scores require enhanced authentication and manual review.",
+    "document_name": "Bank_Risk_Policy.txt",
+    "page_number": 1,
+    "chunk_index": 0
+  },
+  {
+    "chunk_id": "uploaded_policy.txt_p1_c0",
+    "content": "LedgerMind Financial Risk Report: High risk accounts exhibit debt-to-income over 0.50.",
+    "document_name": "uploaded_policy.txt",
+    "page_number": 1,
+    "chunk_index": 0
+  },
+  {
+    "chunk_id": "LedgerMind_Rules.txt_p1_c0",
+    "content": "LedgerMind Policy Rules: Section 1: Multiple failed login attempts (>=3) require instant step-up MFA authentication. Section 2: High device risk scores (>0.75) violate authentication standards. Section 3: Credit utilization over 80% requires risk hold.",
+    "document_name": "LedgerMind_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 0
+  },
+  {
+    "chunk_id": "Bank_Risk_Policy.txt_p1_c0",
+    "content": "Bank Risk Policy: Section: Authentication Risk Multiple failed login attempts violate authentication thresholds. Section: Device Risk High device risk scores require enhanced authentication and manual review.",
+    "document_name": "Bank_Risk_Policy.txt",
+    "page_number": 1,
+    "chunk_index": 0
+  },
+  {
+    "chunk_id": "uploaded_policy.txt_p1_c0",
+    "content": "LedgerMind Financial Risk Report: High risk accounts exhibit debt-to-income over 0.50.",
+    "document_name": "uploaded_policy.txt",
+    "page_number": 1,
+    "chunk_index": 0
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c0",
+    "content": "LedgerMind AI - Synthetic Bank Risk & Compliance Policy IMPORTANT: This is synthetic demo policy content created for testing the LedgerMind AI project. It is not an actual bank policy. 1. Transactions with unusually high amounts should receive enhanced risk assessment. 2. Multiple failed login attempts are treated as an authentication risk signal. 3. Transactions from an unfamiliar device should receive additional verification. 4. High device-risk scores should increase transaction review priority. 5. International transactions may require additional verification depending on risk level. 6. International high-risk locations require enhanced due diligence. 7. High credit utilization should increase financial-risk assessment. 8. High debt-to-income ratios should increase customer financial-stress assessment. 9. Unusually frequent transactions within a short period should be reviewed for velocity risk. 10. Night-time transactions may require additional authentication when combined with other risk signals. 11. Customer financial exposure should be considered when evaluating elevated transaction risk. 12. Analysts should document the reason for approving or declining an escalated transaction. 13. Analysts should document the reason for approving or declining an escalated transaction. 14. Risk decisions should consider both predictive model output and supporting evidence. 15. Authentication anomalies should be considered together with transaction context rather than in isolation. 16.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 0
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c1",
+    "content": "an escalated transaction. 14. Risk decisions should consider both predictive model output and supporting evidence. 15. Authentication anomalies should be considered together with transaction context rather than in isolation. 16. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 17. Analysts should document the reason for approving or declining an escalated transaction. 18. Risk decisions should consider both predictive model output and supporting evidence. 19. Customer financial exposure should be considered when evaluating elevated transaction risk. 20. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 21. Risk decisions should consider both predictive model output and supporting evidence. 22. Analysts should document the reason for approving or declining an escalated transaction. 23. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 24. Risk analysts should review supporting transaction history before approving a high-risk case. 25. Risk analysts should review supporting transaction history before approving a high-risk case. 26. Risk decisions should consider both predictive model output and supporting evidence. 27. High-risk cases should be prioritized for human analyst review. 28. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 29. Cross-border activity with additional anomaly signals should receive enhanced scrutiny.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 1
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c2",
+    "content": "be prioritized for human analyst review. 28. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 29. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 30. High-risk cases should be prioritized for human analyst review. 31. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 32. Authentication anomalies should be considered together with transaction context rather than in isolation. 33. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 34. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 35. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 36. Risk analysts should review supporting transaction history before approving a high-risk case. 37. Authentication anomalies should be considered together with transaction context rather than in isolation. 38. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 39. Authentication anomalies should be considered together with transaction context rather than in isolation. 40. Customer financial exposure should be considered when evaluating elevated transaction risk. 41. Authentication anomalies should be considered together with transaction context rather than in isolation. 42. Evidence used for a risk decision should be traceable to the relevant policy or transaction",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 2
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c3",
+    "content": "41. Authentication anomalies should be considered together with transaction context rather than in isolation. 42. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 43. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 44. Risk analysts should review supporting transaction history before approving a high-risk case. 45. Risk analysts should review supporting transaction history before approving a high-risk case. 46. Risk analysts should review supporting transaction history before approving a high-risk case. 47. Risk analysts should review supporting transaction history before approving a high-risk case. 48. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 49. Risk analysts should review supporting transaction history before approving a high-risk case. 50. Authentication anomalies should be considered together with transaction context rather than in isolation. 51. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 52. Risk decisions should consider both predictive model output and supporting evidence. 53. A transaction should be escalated when multiple independent risk indicators occur together. 54. Analysts should document the reason for approving or declining an escalated transaction. 55. Risk decisions should consider both predictive model output and supporting",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 3
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c4",
+    "content": "multiple independent risk indicators occur together. 54. Analysts should document the reason for approving or declining an escalated transaction. 55. Risk decisions should consider both predictive model output and supporting evidence. 56. Risk decisions should consider both predictive model output and supporting evidence. 57. Authentication anomalies should be considered together with transaction context rather than in isolation. 58. Risk analysts should review supporting transaction history before approving a high-risk case. 59. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 60. Authentication anomalies should be considered together with transaction context rather than in isolation. 61. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 62. A transaction should be escalated when multiple independent risk indicators occur together. 63. Customer financial exposure should be considered when evaluating elevated transaction risk. 64. Analysts should document the reason for approving or declining an escalated transaction. 65. Customer financial exposure should be considered when evaluating elevated transaction risk. 66. Authentication anomalies should be considered together with transaction context rather than in isolation. 67. Risk analysts should review supporting transaction history before approving a high-risk case. 68. Analysts should document the reason for approving or declining an escalated transaction.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 4
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c5",
+    "content": "rather than in isolation. 67. Risk analysts should review supporting transaction history before approving a high-risk case. 68. Analysts should document the reason for approving or declining an escalated transaction. 69. Risk decisions should consider both predictive model output and supporting evidence. 70. High-risk cases should be prioritized for human analyst review. 71. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 72. Cross-border activity with additional anomaly signals should receive enhanced scrutiny. 73. High-risk cases should be prioritized for human analyst review. 74. Risk analysts should review supporting transaction history before approving a high-risk case. 75. Authentication anomalies should be considered together with transaction context rather than in isolation. 76. Risk decisions should consider both predictive model output and supporting evidence. 77. Authentication anomalies should be considered together with transaction context rather than in isolation. 78. Risk analysts should review supporting transaction history before approving a high-risk case. 79. Customer financial exposure should be considered when evaluating elevated transaction risk. 80. Analysts should document the reason for approving or declining an escalated transaction. 81. High-risk cases should be prioritized for human analyst review. 82. Unusual merchant-category activity should be reviewed against the",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 5
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c6",
+    "content": "should document the reason for approving or declining an escalated transaction. 81. High-risk cases should be prioritized for human analyst review. 82. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern. 83. Risk decisions should consider both predictive model output and supporting evidence. 84. Analysts should document the reason for approving or declining an escalated transaction. 85. Analysts should document the reason for approving or declining an escalated transaction. 86. Risk decisions should consider both predictive model output and supporting evidence. 87. A transaction should be escalated when multiple independent risk indicators occur together. 88. Analysts should document the reason for approving or declining an escalated transaction. 89. Customer financial exposure should be considered when evaluating elevated transaction risk. 90. A transaction should be escalated when multiple independent risk indicators occur together. 91. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 92. Customer financial exposure should be considered when evaluating elevated transaction risk. 93. Customer financial exposure should be considered when evaluating elevated transaction risk. 94. Authentication anomalies should be considered together with transaction context rather than in isolation. 95. Authentication anomalies should be considered together with transaction context",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 6
+  },
+  {
+    "chunk_id": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt_p1_c7",
+    "content": "considered when evaluating elevated transaction risk. 94. Authentication anomalies should be considered together with transaction context rather than in isolation. 95. Authentication anomalies should be considered together with transaction context rather than in isolation. 96. A transaction should be escalated when multiple independent risk indicators occur together. 97. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 98. Evidence used for a risk decision should be traceable to the relevant policy or transaction record. 99. Analysts should document the reason for approving or declining an escalated transaction. 100. Unusual merchant-category activity should be reviewed against the customer's normal transaction pattern.",
+    "document_name": "LedgerMind_Synthetic_Bank_Policy_100_Rules.txt",
+    "page_number": 1,
+    "chunk_index": 7
+  },
+  {
+    "chunk_id": "uploaded_policy.txt_p1_c0",
+    "content": "LedgerMind Financial Risk Report: High risk accounts exhibit debt-to-income over 0.50.",
+    "document_name": "uploaded_policy.txt",
+    "page_number": 1,
+    "chunk_index": 0
   }
 ]

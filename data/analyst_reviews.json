@@ -268,5 +268,238 @@
     "rag_evidence": [],
     "news_sentiment": "Negative",
     "ai_recommendations": []
+  },
+  {
+    "review_id": "REV_0015",
+    "transaction_id": "TXN_API_999",
+    "timestamp": "2026-08-13T06:27:51.170792Z",
+    "analyst_id": "Analyst_Compliance",
+    "decision": "INVESTIGATE",
+    "comments": "Flagged for manual compliance check",
+    "risk_score": 0.85,
+    "anomaly_score": 0.78,
+    "transaction_details": {
+      "transaction_amount": 10000.0
+    },
+    "shap_factors": [],
+    "rag_evidence": [],
+    "news_sentiment": "Negative",
+    "ai_recommendations": []
+  },
+  {
+    "review_id": "REV_0016",
+    "transaction_id": "TXN_API_999",
+    "timestamp": "2026-08-13T06:43:34.439199Z",
+    "analyst_id": "Analyst_Compliance",
+    "decision": "INVESTIGATE",
+    "comments": "Flagged for manual compliance check",
+    "risk_score": 0.85,
+    "anomaly_score": 0.78,
+    "transaction_details": {
+      "transaction_amount": 10000.0
+    },
+    "shap_factors": [],
+    "rag_evidence": [],
+    "news_sentiment": "Negative",
+    "ai_recommendations": []
+  },
+  {
+    "review_id": "REV_0017",
+    "transaction_id": "CUST_001",
+    "timestamp": "2026-08-13T07:00:47.824422Z",
+    "analyst_id": "Analyst_01",
+    "decision": "REJECT",
+    "comments": "Violates compliance limits",
+    "risk_score": 0.95,
+    "anomaly_score": 0.88,
+    "transaction_details": {
+      "transaction_amount": 14500.0,
+      "transaction_frequency": 24,
+      "merchant_category": "Wire_Transfer",
+      "location": "Domestic",
+      "customer_id": "CUST_001",
+      "customer_name": "Acme Corporate",
+      "time_pattern": 14,
+      "is_night_transaction": 0,
+      "is_weekend": 0,
+      "account_age_days": 180,
+      "avg_monthly_income": 5000.0,
+      "debt_to_income": 0.35,
+      "interest_rate": 7.5,
+      "credit_utilization": 0.5,
+      "failed_login_attempts": 0,
+      "device_risk_score": 0.2,
+      "risk_score": 1.0,
+      "risk_level": "HIGH",
+      "anomaly_score": 1.0,
+      "anomaly_status": "HIGHLY ANOMALOUS",
+      "combined_risk_score": 1.0,
+      "combined_risk_level": "HIGH",
+      "requires_human_review": true,
+      "review_status": "Requires Human Review"
+    },
+    "shap_factors": [],
+    "rag_evidence": [],
+    "news_sentiment": "Negative",
+    "ai_recommendations": []
+  },
+  {
+    "review_id": "REV_0018",
+    "transaction_id": "TXN_API_999",
+    "timestamp": "2026-08-13T07:01:19.839125Z",
+    "analyst_id": "Analyst_Compliance",
+    "decision": "INVESTIGATE",
+    "comments": "Flagged for manual compliance check",
+    "risk_score": 0.85,
+    "anomaly_score": 0.78,
+    "transaction_details": {
+      "transaction_amount": 10000.0
+    },
+    "shap_factors": [],
+    "rag_evidence": [],
+    "news_sentiment": "Negative",
+    "ai_recommendations": []
+  },
+  {
+    "review_id": "REV_0019",
+    "transaction_id": "TXN_API_999",
+    "timestamp": "2026-08-13T07:06:59.098335Z",
+    "analyst_id": "Analyst_Compliance",
+    "decision": "INVESTIGATE",
+    "comments": "Flagged for manual compliance check",
+    "risk_score": 0.85,
+    "anomaly_score": 0.78,
+    "transaction_details": {
+      "transaction_amount": 10000.0
+    },
+    "shap_factors": [],
+    "rag_evidence": [],
+    "news_sentiment": "Negative",
+    "ai_recommendations": []
+  },
+  {
+    "review_id": "REV_0020",
+    "transaction_id": "CUST_0006",
+    "timestamp": "2026-08-13T07:15:38.059793Z",
+    "analyst_id": "Analyst_01",
+    "decision": "REJECT",
+    "comments": "High risk",
+    "risk_score": 0.9,
+    "anomaly_score": 0.8,
+    "transaction_details": {
+      "transaction_amount": 12500.0,
+      "transaction_frequency": 22,
+      "merchant_category": "Crypto_Exchange",
+      "location": "Domestic",
+      "customer_id": "CUST_0006",
+      "customer_name": "Customer 006",
+      "time_pattern": 14,
+      "is_night_transaction": 0,
+      "is_weekend": 0,
+      "account_age_days": 180,
+      "avg_monthly_income": 5000.0,
+      "debt_to_income": 0.35,
+      "interest_rate": 7.5,
+      "credit_utilization": 0.5,
+      "failed_login_attempts": 0,
+      "device_risk_score": 0.2,
+      "risk_score": 1.0,
+      "risk_level": "HIGH",
+      "anomaly_score": 1.0,
+      "anomaly_status": "HIGHLY ANOMALOUS",
+      "combined_risk_score": 1.0,
+      "combined_risk_level": "HIGH",
+      "requires_human_review": true,
+      "review_status": "Requires Human Review"
+    },
+    "shap_factors": [],
+    "rag_evidence": [],
+    "news_sentiment": "Negative",
+    "ai_recommendations": []
+  },
+  {
+    "review_id": "REV_0021",
+    "transaction_id": "TXN_API_999",
+    "timestamp": "2026-08-13T07:16:07.937097Z",
+    "analyst_id": "Analyst_Compliance",
+    "decision": "INVESTIGATE",
+    "comments": "Flagged for manual compliance check",
+    "risk_score": 0.85,
+    "anomaly_score": 0.78,
+    "transaction_details": {
+      "transaction_amount": 10000.0
+    },
+    "shap_factors": [],
+    "rag_evidence": [],
+    "news_sentiment": "Negative",
+    "ai_recommendations": []
+  },
+  {
+    "review_id": "REV_0022",
+    "transaction_id": "TXN_API_999",
+    "timestamp": "2026-08-13T07:20:27.698587Z",
+    "analyst_id": "Analyst_Compliance",
+    "decision": "INVESTIGATE",
+    "comments": "Flagged for manual compliance check",
+    "risk_score": 0.85,
+    "anomaly_score": 0.78,
+    "transaction_details": {
+      "transaction_amount": 10000.0
+    },
+    "shap_factors": [],
+    "rag_evidence": [],
+    "news_sentiment": "Negative",
+    "ai_recommendations": []
+  },
+  {
+    "review_id": "REV_0023",
+    "transaction_id": "TXN_API_999",
+    "timestamp": "2026-08-13T13:26:15.393235Z",
+    "analyst_id": "Analyst_Compliance",
+    "decision": "INVESTIGATE",
+    "comments": "Flagged for manual compliance check",
+    "risk_score": 0.85,
+    "anomaly_score": 0.78,
+    "transaction_details": {
+      "transaction_amount": 10000.0
+    },
+    "shap_factors": [],
+    "rag_evidence": [],
+    "news_sentiment": "Negative",
+    "ai_recommendations": []
+  },
+  {
+    "review_id": "REV_0024",
+    "transaction_id": "TXN_API_999",
+    "timestamp": "2026-08-13T13:33:49.749786Z",
+    "analyst_id": "Analyst_Compliance",
+    "decision": "INVESTIGATE",
+    "comments": "Flagged for manual compliance check",
+    "risk_score": 0.85,
+    "anomaly_score": 0.78,
+    "transaction_details": {
+      "transaction_amount": 10000.0
+    },
+    "shap_factors": [],
+    "rag_evidence": [],
+    "news_sentiment": "Negative",
+    "ai_recommendations": []
+  },
+  {
+    "review_id": "REV_0025",
+    "transaction_id": "TXN_API_999",
+    "timestamp": "2026-08-13T13:43:05.077153Z",
+    "analyst_id": "Analyst_Compliance",
+    "decision": "INVESTIGATE",
+    "comments": "Flagged for manual compliance check",
+    "risk_score": 0.85,
+    "anomaly_score": 0.78,
+    "transaction_details": {
+      "transaction_amount": 10000.0
+    },
+    "shap_factors": [],
+    "rag_evidence": [],
+    "news_sentiment": "Negative",
+    "ai_recommendations": []
   }
 ]

@@ -155,6 +155,15 @@ class ReviewSubmissionSchema(BaseModel):
 
 # --- API Endpoints ---
 
+@app.get("/")
+def root():
+    return {
+        "message": "Welcome to RiskLens AI Platform API",
+        "documentation": "/docs",
+        "health": "/health",
+        "status": "healthy"
+    }
+
 @app.get("/health")
 def health_check():
     """Lightweight health check endpoint requiring zero ML/NLP/RAG memory overhead."""
