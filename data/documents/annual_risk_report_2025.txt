@@ -1,0 +1,26 @@
+================================================================================
+LEDGERMIND FINANCIAL ANNUAL RISK & LIQUIDITY ASSESSMENT REPORT 2025
+================================================================================
+
+1. EXECUTIVE SUMMARY & RISK PROFILE
+LedgerMind Financial Services maintains a rigorous credit risk monitoring framework across commercial and retail portfolios. In FY2025, total managed credit exposure reached $4.2 Billion. High-risk transactions are defined as those exhibiting unexpected velocity (>10 transactions per hour), high debt-to-income ratios (>0.50), high credit utilization (>80%), or cross-border transfers to unverified offshore entities.
+
+2. LIQUIDITY AND DEBT OBLIGATIONS
+The corporate loan portfolio experienced a modest increase in non-performing loans (NPL) from 1.8% to 3.4%. Higher benchmark interest rates (currently 8.5%) have elevated default risk for highly leveraged borrowers. Debt-to-income ratio thresholds have been lowered to 0.45 to prevent systemic credit defaults.
+
+3. TRANSACTIONAL ANOMALY INDICATORS
+Our Quantitative Risk Engine identifies four primary anomaly vectors:
+- Rapid Velocity: Multiple high-value transfers within a 15-minute window.
+- Off-Hours Settlement: Large transfers executed between 22:00 and 05:00 local time.
+- Unverified Foreign Destinations: Direct wires to high-risk international jurisdictions.
+- Device Anomaly: Authentication attempts from unverified IP ranges coupled with multiple failed login attempts.
+
+4. CREDIT UNDERWRITING POLICY & RECOMMENDATIONS
+To mitigate elevated default and fraud exposure:
+1. Require multi-factor step-up authentication for any transfer exceeding $5,000 to new counterparties.
+2. Freeze accounts experiencing more than 3 failed login attempts within 10 minutes.
+3. Automatically elevate customer risk tier to 'HIGH' if credit utilization exceeds 85% and debt-to-income exceeds 0.60.
+4. Conduct quarterly portfolio stress tests under simulated benchmark interest rate increases (+200 bps).
+
+5. REGULATORY COMPLIANCE AND ANTI-MONEY LAUNDERING (AML)
+All international wire transfers over $10,000 undergo automated suspicious activity reporting (SAR) screening. Entities operating in high-friction merchant categories (Crypto Exchanges, Gambling, Unregulated Forex) are subjected to continuous transaction monitoring and enhanced due diligence.
